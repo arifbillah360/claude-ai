@@ -3,74 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Premium garments manufacturing with over 15,000 completed projects. Quality apparel production you can trust.">
+    <meta name="description" content="Premium garments manufacturing and apparel production with over 3M+ garments produced. Quality craftsmanship, modern facilities, and trusted by 8K+ customers worldwide.">
+    <meta name="keywords" content="garments manufacturing, apparel production, clothing manufacturer, textile production">
     <title>Premium Garments Manufacturing | Quality Apparel Production</title>
 
     <style>
+        /* ============================================
+           CSS VARIABLES & RESET
+           ============================================ */
+        :root {
+            --primary-color: #064D4C;
+            --black: #000;
+            --white: #FFF;
+            --light-gray: #F5F5F5;
+            --font-main: 'Helvetica Neue', Helvetica, sans-serif;
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #064D4C;
-            --black: #000;
-            --white: #FFF;
-            --light-gray: #F5F5F5;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, sans-serif;
-            color: var(--black);
+            font-family: var(--font-main);
+            font-size: 16px;
             line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
             overflow-x: hidden;
         }
 
-        /* Header & Navigation */
-        header {
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: var(--font-main);
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border-radius: 0;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #053d3c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(6, 77, 76, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* ============================================
+           HEADER & NAVIGATION
+           ============================================ */
+        .header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             background: var(--white);
-            z-index: 1000;
-            transition: box-shadow 0.3s ease;
-        }
-
-        header.scrolled {
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: var(--transition);
         }
 
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 3rem;
+        .header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 28px;
             font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            letter-spacing: -0.5px;
+            color: var(--primary-color);
+            letter-spacing: -1px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 40px;
         }
 
         .nav-menu a {
-            text-decoration: none;
-            color: var(--black);
+            font-size: 15px;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
             position: relative;
         }
 
@@ -81,307 +178,268 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
+            background: var(--primary-color);
+            transition: var(--transition);
         }
 
         .nav-menu a:hover::after {
             width: 100%;
         }
 
-        .nav-menu a:hover {
-            color: var(--primary);
-        }
-
-        .mobile-menu-toggle {
+        .nav-toggle {
             display: none;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
-            background: none;
-            border: none;
         }
 
-        .mobile-menu-toggle span {
+        .nav-toggle span {
             width: 25px;
             height: 3px;
-            background: var(--black);
-            transition: all 0.3s ease;
+            background: var(--primary-color);
+            transition: var(--transition);
         }
 
-        /* Hero Section */
+        /* ============================================
+           HERO SECTION
+           ============================================ */
         .hero {
+            position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero.jpg') center/cover no-repeat;
+            min-height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero.jpg') center/cover no-repeat;
             color: var(--white);
-            margin-top: 80px;
+            margin-top: 70px;
         }
 
         .hero-content {
             max-width: 900px;
-            padding: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
+            padding: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: transparent;
-            border-color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border-color: var(--white);
-        }
-
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        /* Stats Section */
+        /* ============================================
+           STATS SECTION
+           ============================================ */
         .stats {
-            background: var(--primary);
+            background: var(--primary-color);
             color: var(--white);
-            padding: 5rem 3rem;
+            padding: 60px 0;
         }
 
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .stat-item {
+            gap: 40px;
             text-align: center;
         }
 
+        .stat-item {
+            padding: 20px;
+        }
+
         .stat-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 48px;
+            margin-bottom: 20px;
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 48px;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
+            margin-bottom: 10px;
+            display: block;
         }
 
         .stat-label {
-            font-size: 1.1rem;
-            font-weight: 300;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             opacity: 0.9;
         }
 
-        /* About Section */
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
         .about {
-            padding: 8rem 3rem;
-            background: var(--white);
+            background: var(--light-gray);
         }
 
-        .about-container {
-            max-width: 1400px;
-            margin: 0 auto;
+        .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
+            gap: 60px;
             align-items: center;
         }
 
         .about-image {
-            width: 100%;
-            height: 500px;
-            background: url('images/about.jpg') center/cover no-repeat;
-            background-color: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
 
-        .about-content h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h2 {
+            font-size: 42px;
             font-weight: 700;
+            margin-bottom: 20px;
             letter-spacing: -1px;
         }
 
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+        .about-text p {
+            font-size: 17px;
             line-height: 1.8;
+            margin-bottom: 30px;
             color: #333;
         }
 
-        .about-list {
+        .about-features {
             list-style: none;
-            margin-bottom: 2rem;
+            margin-bottom: 30px;
         }
 
-        .about-list li {
-            padding: 0.75rem 0;
-            font-size: 1.05rem;
+        .about-features li {
+            padding: 12px 0;
+            padding-left: 30px;
             position: relative;
-            padding-left: 2rem;
+            font-size: 16px;
+            font-weight: 500;
         }
 
-        .about-list li::before {
+        .about-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--primary);
+            color: var(--primary-color);
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 20px;
         }
 
-        /* Services Section */
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
         .services {
-            padding: 8rem 3rem;
-            background: var(--light-gray);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: #666;
+            background: var(--white);
         }
 
         .services-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .service-card {
-            background: var(--white);
-            padding: 3rem 2rem;
+            background: var(--light-gray);
+            padding: 40px 30px;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
+            transition: var(--transition);
+            border: 2px solid transparent;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-color: var(--primary);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .service-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+            font-size: 60px;
+            margin-bottom: 25px;
+            color: var(--primary-color);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--black);
+            font-size: 24px;
             font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
 
         .service-card p {
-            color: #666;
-            line-height: 1.8;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
         }
 
-        /* Portfolio Section */
+        /* ============================================
+           PORTFOLIO SECTION
+           ============================================ */
         .portfolio {
-            padding: 8rem 3rem;
-            background: var(--white);
+            background: var(--light-gray);
         }
 
         .portfolio-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .portfolio-item {
-            height: 400px;
-            background-color: var(--light-gray);
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
+            height: 350px;
             cursor: pointer;
+            background: var(--black);
         }
 
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: var(--transition);
+            opacity: 0.9;
         }
 
         .portfolio-item:hover img {
             transform: scale(1.1);
+            opacity: 0.4;
         }
 
         .portfolio-overlay {
@@ -390,357 +448,345 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(6, 77, 76, 0.9);
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 700;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: var(--transition);
+            background: rgba(6, 77, 76, 0.8);
         }
 
         .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
         }
 
-        .portfolio-overlay h4 {
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-
-        /* Clients Section */
+        /* ============================================
+           CLIENTS SECTION
+           ============================================ */
         .clients {
-            padding: 6rem 3rem;
-            background: var(--light-gray);
+            background: var(--white);
+            padding: 60px 0;
         }
 
-        .clients-strip {
-            max-width: 1400px;
-            margin: 0 auto;
+        .clients h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .clients-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px;
             align-items: center;
         }
 
         .client-logo {
-            height: 80px;
-            background-color: var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            opacity: 0.6;
+            transition: var(--transition);
             filter: grayscale(100%);
-            transition: filter 0.3s ease;
+            padding: 20px;
         }
 
         .client-logo:hover {
+            opacity: 1;
             filter: grayscale(0%);
         }
 
         .client-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            max-width: 120px;
+            max-height: 60px;
         }
 
-        /* Testimonials Section */
+        /* ============================================
+           TESTIMONIALS SECTION
+           ============================================ */
         .testimonials {
-            padding: 8rem 3rem;
-            background: var(--white);
+            background: var(--primary-color);
+            color: var(--white);
         }
 
-        .testimonials-container {
-            max-width: 900px;
+        .testimonials .section-title {
+            color: var(--white);
+        }
+
+        .testimonials .section-subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .testimonial-carousel {
+            max-width: 800px;
             margin: 0 auto;
             position: relative;
         }
 
-        .testimonial-slider {
-            overflow: hidden;
-        }
-
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
         .testimonial-item {
-            min-width: 100%;
             text-align: center;
-            padding: 2rem;
+            padding: 40px;
+            display: none;
+        }
+
+        .testimonial-item.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .testimonial-text {
-            font-size: 1.5rem;
-            font-style: italic;
-            margin-bottom: 2rem;
-            color: #333;
+            font-size: 22px;
             line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 30px;
+            opacity: 0.95;
         }
 
         .testimonial-author {
+            font-size: 18px;
             font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
+            margin-bottom: 5px;
         }
 
         .testimonial-position {
-            color: #666;
-            font-size: 0.95rem;
+            font-size: 15px;
+            opacity: 0.8;
         }
 
-        .testimonial-dots {
+        .testimonial-nav {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 10px;
+            margin-top: 30px;
         }
 
-        .dot {
+        .testimonial-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #ccc;
+            background: rgba(255,255,255,0.3);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
-        .dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
+        .testimonial-dot.active {
+            background: var(--white);
+            width: 30px;
+            border-radius: 6px;
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 8rem 3rem;
-            background: var(--primary);
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/cta-bg.jpg') center/cover fixed;
             color: var(--white);
             text-align: center;
+            padding: 100px 20px;
         }
 
-        .cta-section h2 {
-            font-size: 3.5rem;
-            margin-bottom: 2rem;
+        .cta h2 {
+            font-size: 52px;
             font-weight: 700;
+            margin-bottom: 30px;
             letter-spacing: -1px;
         }
 
-        .cta-section .btn {
-            background: var(--white);
-            color: var(--primary);
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
         }
 
-        .cta-section .btn:hover {
-            background: transparent;
-            color: var(--white);
-            border-color: var(--white);
-        }
-
-        /* Footer */
-        footer {
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
             background: var(--black);
             color: var(--white);
-            padding: 5rem 3rem 2rem;
+            padding: 60px 0 20px;
         }
 
         .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 20px;
             font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
         }
 
-        .footer-column p,
-        .footer-column a {
-            color: #ccc;
-            line-height: 2;
-            text-decoration: none;
-            display: block;
-            transition: color 0.3s ease;
+        .footer-column p {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 15px;
         }
 
-        .footer-column a:hover {
-            color: var(--white);
+        .footer-links {
+            list-style: none;
         }
 
-        .social-icons {
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .social-icon {
+        .social-links a {
             width: 40px;
             height: 40px;
-            background: var(--primary);
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
+            font-size: 18px;
+            transition: var(--transition);
         }
 
-        .social-icon:hover {
+        .social-links a:hover {
+            background: var(--primary-color);
             transform: translateY(-3px);
         }
 
         .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
             text-align: center;
-            color: #999;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            opacity: 0.7;
         }
 
-        /* Responsive Design */
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
         @media (max-width: 968px) {
             .nav-menu {
                 position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 100%;
-                max-width: 300px;
-                height: calc(100vh - 80px);
-                background: var(--white);
+                left: -100%;
+                top: 70px;
                 flex-direction: column;
-                padding: 2rem;
-                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-                transition: right 0.3s ease;
-                gap: 0;
+                background: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                padding: 40px 0;
+                gap: 20px;
             }
 
             .nav-menu.active {
-                right: 0;
+                left: 0;
             }
 
-            .nav-menu li {
-                padding: 1rem 0;
-                border-bottom: 1px solid var(--light-gray);
-            }
-
-            .mobile-menu-toggle {
+            .nav-toggle {
                 display: flex;
             }
 
-            .mobile-menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-            }
-
-            .mobile-menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .mobile-menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 48px;
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: 18px;
             }
 
-            .about-container {
+            .section-title {
+                font-size: 36px;
+            }
+
+            .about-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
             }
 
-            .about-image {
-                height: 350px;
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .section-header h2,
-            .about-content h2 {
-                font-size: 2.2rem;
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .cta-section h2 {
-                font-size: 2rem;
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                height: auto;
+                min-height: 500px;
+                padding: 100px 0;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
 
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        @media (max-width: 600px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .hero {
-                margin-top: 70px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .stats {
-                padding: 3rem 1.5rem;
-            }
-
-            .stats-container {
-                gap: 2rem;
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .about,
-            .services,
-            .portfolio,
-            .testimonials,
-            .cta-section {
-                padding: 4rem 1.5rem;
-            }
-
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
 
             .testimonial-text {
-                font-size: 1.2rem;
+                font-size: 18px;
             }
 
-            footer {
-                padding: 3rem 1.5rem 2rem;
+            .cta h2 {
+                font-size: 32px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <nav>
-            <a href="#" class="logo">GARMENTS</a>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">GARMENTS PRO</a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -749,294 +795,303 @@
                 <li><a href="#clients">Clients</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-toggle" id="mobileToggle">
+            <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- HERO SECTION -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>PREMIUM QUALITY THAT COMMANDS ATTENTION</h1>
-            <p>Leading the industry with exceptional craftsmanship, cutting-edge technology, and unwavering commitment to manufacturing excellence since day one.</p>
-            <div class="cta-buttons">
+            <p>We deliver world-class garment manufacturing excellence with cutting-edge technology, skilled craftsmanship, and unwavering commitment to quality. Your vision, our expertise.</p>
+            <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Get a Quote</a>
                 <a href="#portfolio" class="btn btn-outline">View Portfolio</a>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- STATS SECTION -->
     <section class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-icon">👕</div>
-                <div class="stat-number" data-target="3000000">0</div>
-                <div class="stat-label">Garments Produced</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">📦</div>
-                <div class="stat-number" data-target="15000">0</div>
-                <div class="stat-label">Completed Projects</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">🤝</div>
-                <div class="stat-number" data-target="8000">0</div>
-                <div class="stat-label">Customers Served</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">👥</div>
-                <div class="stat-number" data-target="300">0</div>
-                <div class="stat-label">Skilled Employees</div>
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">📦</div>
+                    <span class="stat-number" data-target="3000000">0</span>
+                    <div class="stat-label">Garments Produced</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">✓</div>
+                    <span class="stat-number" data-target="15000">0</span>
+                    <div class="stat-label">Completed Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">👥</div>
+                    <span class="stat-number" data-target="8000">0</span>
+                    <div class="stat-label">Customers Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⚙️</div>
+                    <span class="stat-number" data-target="300">0</span>
+                    <div class="stat-label">Skilled Employees</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-image"></div>
+    <!-- ABOUT SECTION -->
+    <section class="about section" id="about">
+        <div class="container">
             <div class="about-content">
-                <h2>Crafting Excellence Since the Beginning</h2>
-                <p>We are a leading garments manufacturing company dedicated to delivering premium quality apparel that exceeds industry standards. Our state-of-the-art facilities and skilled workforce enable us to handle projects of any scale with precision and care.</p>
-                <ul class="about-list">
-                    <li>State-of-the-art manufacturing facilities</li>
-                    <li>Highly skilled and trained workforce</li>
-                    <li>Strict quality control at every stage</li>
-                    <li>On-time delivery guaranteed</li>
-                    <li>Sustainable and ethical practices</li>
-                    <li>Competitive pricing without compromise</li>
-                </ul>
-                <a href="#contact" class="btn btn-primary">Learn More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="section-header">
-            <h2>Our Services</h2>
-            <p>Comprehensive garment manufacturing solutions tailored to your needs</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">📐</div>
-                <h3>Pattern Making</h3>
-                <p>Expert pattern design and development to bring your vision to life with precision and accuracy.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">✂️</div>
-                <h3>Cutting</h3>
-                <p>Advanced cutting technology ensuring minimal waste and maximum fabric utilization for every project.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🪡</div>
-                <h3>Sewing</h3>
-                <p>Professional sewing services with attention to detail, delivering flawless stitching and construction.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎨</div>
-                <h3>Printing</h3>
-                <p>High-quality screen printing and digital printing solutions for vibrant, long-lasting designs.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>Embroidery</h3>
-                <p>Intricate embroidery work that adds elegance and sophistication to any garment.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🔍</div>
-                <h3>Quality Control</h3>
-                <p>Rigorous inspection processes ensuring every piece meets our exacting standards of excellence.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="section-header">
-            <h2>Our Work</h2>
-            <p>A showcase of our finest projects and craftsmanship</p>
-        </div>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="images/portfolio-1.jpg" alt="Portfolio Item 1">
-                <div class="portfolio-overlay">
-                    <h4>Premium T-Shirts</h4>
+                <div class="about-image">
+                    <img src="images/about.jpg" alt="Our Manufacturing Facility">
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/portfolio-2.jpg" alt="Portfolio Item 2">
-                <div class="portfolio-overlay">
-                    <h4>Designer Jackets</h4>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/portfolio-3.jpg" alt="Portfolio Item 3">
-                <div class="portfolio-overlay">
-                    <h4>Formal Wear</h4>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/portfolio-4.jpg" alt="Portfolio Item 4">
-                <div class="portfolio-overlay">
-                    <h4>Sportswear Collection</h4>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/portfolio-5.jpg" alt="Portfolio Item 5">
-                <div class="portfolio-overlay">
-                    <h4>Custom Uniforms</h4>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/portfolio-6.jpg" alt="Portfolio Item 6">
-                <div class="portfolio-overlay">
-                    <h4>Casual Apparel</h4>
+                <div class="about-text">
+                    <h2>Building Excellence Since Day One</h2>
+                    <p>With state-of-the-art facilities and a team of over 300 skilled professionals, we've established ourselves as a trusted name in garment manufacturing. Our commitment to quality, innovation, and customer satisfaction has made us the preferred choice for brands worldwide.</p>
+                    <p>From initial design to final delivery, we maintain the highest standards at every step of the production process.</p>
+                    <ul class="about-features">
+                        <li>ISO 9001:2015 Certified Manufacturing</li>
+                        <li>Advanced Production Technology</li>
+                        <li>Sustainable & Eco-Friendly Practices</li>
+                        <li>On-Time Delivery Guarantee</li>
+                        <li>Rigorous Quality Control Process</li>
+                        <li>Competitive Pricing with Premium Quality</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Partner With Us</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Clients Section -->
+    <!-- SERVICES SECTION -->
+    <section class="services section" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive garment manufacturing solutions tailored to your needs. From design to delivery, we handle everything with precision and care.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📐</div>
+                    <h3>Pattern Making</h3>
+                    <p>Expert pattern design and grading services ensuring perfect fit and optimal fabric utilization for all garment types.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Cutting</h3>
+                    <p>Precision cutting using advanced automated systems for consistent quality and minimal fabric waste.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧵</div>
+                    <h3>Sewing</h3>
+                    <p>Skilled seamstresses and modern machinery deliver flawless construction on every piece we produce.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Printing</h3>
+                    <p>High-quality screen printing and digital printing services for vibrant, long-lasting designs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🪡</div>
+                    <h3>Embroidery</h3>
+                    <p>Intricate embroidery work that adds elegance and distinction to your garment collections.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Quality Control</h3>
+                    <p>Multi-stage inspection process ensuring every garment meets international quality standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio section" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Portfolio</h2>
+            <p class="section-subtitle">Explore our diverse range of projects showcasing quality craftsmanship and attention to detail.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="images/portfolio-1.jpg" alt="T-Shirt Collection">
+                    <div class="portfolio-overlay">T-Shirt Collection</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/portfolio-2.jpg" alt="Corporate Uniforms">
+                    <div class="portfolio-overlay">Corporate Uniforms</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/portfolio-3.jpg" alt="Sports Apparel">
+                    <div class="portfolio-overlay">Sports Apparel</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/portfolio-4.jpg" alt="Fashion Collection">
+                    <div class="portfolio-overlay">Fashion Collection</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/portfolio-5.jpg" alt="Kids Wear">
+                    <div class="portfolio-overlay">Kids Wear</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/portfolio-6.jpg" alt="Formal Wear">
+                    <div class="portfolio-overlay">Formal Wear</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS SECTION -->
     <section class="clients" id="clients">
-        <div class="section-header">
+        <div class="container">
             <h2>Trusted By Leading Brands</h2>
-            <p>Proud to partner with industry leaders worldwide</p>
-        </div>
-        <div class="clients-strip">
-            <div class="client-logo">
-                <img src="images/client-1.png" alt="Client 1">
-            </div>
-            <div class="client-logo">
-                <img src="images/client-2.png" alt="Client 2">
-            </div>
-            <div class="client-logo">
-                <img src="images/client-3.png" alt="Client 3">
-            </div>
-            <div class="client-logo">
-                <img src="images/client-4.png" alt="Client 4">
-            </div>
-            <div class="client-logo">
-                <img src="images/client-5.png" alt="Client 5">
-            </div>
-            <div class="client-logo">
-                <img src="images/client-6.png" alt="Client 6">
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="section-header">
-            <h2>What Our Clients Say</h2>
-            <p>Real feedback from satisfied partners</p>
-        </div>
-        <div class="testimonials-container">
-            <div class="testimonial-slider">
-                <div class="testimonial-track" id="testimonialTrack">
-                    <div class="testimonial-item">
-                        <p class="testimonial-text">"Outstanding quality and exceptional service. They delivered our order ahead of schedule without compromising on craftsmanship. Highly recommended!"</p>
-                        <div class="testimonial-author">Sarah Johnson</div>
-                        <div class="testimonial-position">CEO, Fashion Forward Inc.</div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="testimonial-text">"Working with this team has been transformative for our brand. Their attention to detail and commitment to excellence is unmatched in the industry."</p>
-                        <div class="testimonial-author">Michael Chen</div>
-                        <div class="testimonial-position">Director of Operations, StyleCraft</div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="testimonial-text">"The best manufacturing partner we've ever had. Professional, reliable, and consistently delivering premium quality products that exceed our expectations."</p>
-                        <div class="testimonial-author">Emily Rodriguez</div>
-                        <div class="testimonial-position">Founder, Urban Threads</div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="testimonial-text">"Their state-of-the-art facilities and skilled workforce make them a cut above the rest. We've been partners for years and couldn't be happier."</p>
-                        <div class="testimonial-author">David Park</div>
-                        <div class="testimonial-position">VP of Production, Elite Apparel</div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="testimonial-text">"From pattern making to final delivery, every step of the process is handled with precision and care. True professionals in every sense of the word."</p>
-                        <div class="testimonial-author">Jennifer Thompson</div>
-                        <div class="testimonial-position">Creative Director, Modern Wear Co.</div>
-                    </div>
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <img src="images/client-1.png" alt="Client 1">
+                </div>
+                <div class="client-logo">
+                    <img src="images/client-2.png" alt="Client 2">
+                </div>
+                <div class="client-logo">
+                    <img src="images/client-3.png" alt="Client 3">
+                </div>
+                <div class="client-logo">
+                    <img src="images/client-4.png" alt="Client 4">
+                </div>
+                <div class="client-logo">
+                    <img src="images/client-5.png" alt="Client 5">
+                </div>
+                <div class="client-logo">
+                    <img src="images/client-6.png" alt="Client 6">
                 </div>
             </div>
-            <div class="testimonial-dots" id="testimonialDots"></div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <h2>Start Your Next Project With Us</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 2rem; font-weight: 300;">Let's create something exceptional together</p>
-        <a href="mailto:info@garments.com" class="btn">Get Started Today</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>About Us</h3>
-                <p>Leading garments manufacturer dedicated to premium quality and exceptional service. Trusted by brands worldwide.</p>
-                <div class="social-icons">
-                    <a href="#" class="social-icon">f</a>
-                    <a href="#" class="social-icon">t</a>
-                    <a href="#" class="social-icon">in</a>
-                    <a href="#" class="social-icon">ig</a>
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials section">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Don't just take our word for it. Here's what industry leaders say about working with us.</p>
+            <div class="testimonial-carousel">
+                <div class="testimonial-item active">
+                    <p class="testimonial-text">"Exceptional quality and timely delivery. They've been our manufacturing partner for 3 years and have never disappointed us. Highly recommended!"</p>
+                    <div class="testimonial-author">Sarah Johnson</div>
+                    <div class="testimonial-position">CEO, Fashion Forward Brand</div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"The attention to detail and craftsmanship is outstanding. Our corporate uniform order was flawless. Best manufacturing partner we've worked with."</p>
+                    <div class="testimonial-author">Michael Chen</div>
+                    <div class="testimonial-position">Procurement Manager, Tech Corp</div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Professional, reliable, and committed to excellence. They transformed our designs into reality with precision. A true manufacturing powerhouse."</p>
+                    <div class="testimonial-author">Emily Rodriguez</div>
+                    <div class="testimonial-position">Creative Director, Urban Style</div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Outstanding service from start to finish. Their quality control is rigorous and the team is incredibly responsive. We couldn't ask for a better partner."</p>
+                    <div class="testimonial-author">David Thompson</div>
+                    <div class="testimonial-position">Founder, Sports Apparel Co.</div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"The best in the business! From pattern making to final packaging, every step exceeded our expectations. Will definitely continue this partnership."</p>
+                    <div class="testimonial-author">Lisa Anderson</div>
+                    <div class="testimonial-position">Brand Manager, Kids Fashion</div>
+                </div>
+                <div class="testimonial-nav">
+                    <span class="testimonial-dot active" data-index="0"></span>
+                    <span class="testimonial-dot" data-index="1"></span>
+                    <span class="testimonial-dot" data-index="2"></span>
+                    <span class="testimonial-dot" data-index="3"></span>
+                    <span class="testimonial-dot" data-index="4"></span>
                 </div>
             </div>
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <a href="#home">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#services">Services</a>
-                <a href="#portfolio">Portfolio</a>
-            </div>
-            <div class="footer-column">
-                <h3>Services</h3>
-                <a href="#services">Pattern Making</a>
-                <a href="#services">Cutting & Sewing</a>
-                <a href="#services">Printing & Embroidery</a>
-                <a href="#services">Quality Control</a>
-            </div>
-            <div class="footer-column">
-                <h3>Contact Info</h3>
-                <p>123 Industrial Avenue</p>
-                <p>Manufacturing District</p>
-                <p>Phone: +1 (555) 123-4567</p>
-                <p>Email: info@garments.com</p>
-            </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Garments Manufacturing. All rights reserved.</p>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>START YOUR NEXT PROJECT WITH US</h2>
+            <p>Ready to bring your vision to life? Let's create something exceptional together.</p>
+            <a href="mailto:info@garmentspro.com" class="btn btn-primary">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Garments Pro</h3>
+                    <p>Leading garment manufacturing company delivering premium quality apparel with state-of-the-art facilities and skilled craftsmanship since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#clients">Clients</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Pattern Making</a></li>
+                        <li><a href="#services">Cutting</a></li>
+                        <li><a href="#services">Sewing</a></li>
+                        <li><a href="#services">Printing</a></li>
+                        <li><a href="#services">Embroidery</a></li>
+                        <li><a href="#services">Quality Control</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📍 123 Industrial Area, Dhaka, Bangladesh</li>
+                        <li>📞 +880 1234-567890</li>
+                        <li>📧 info@garmentspro.com</li>
+                        <li>⏰ Mon - Sat: 9:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Garments Pro. All Rights Reserved. | Designed with Excellence</p>
+            </div>
         </div>
     </footer>
 
+    <!-- JAVASCRIPT -->
     <script>
-        // Mobile Menu Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
         const navMenu = document.getElementById('navMenu');
 
-        mobileToggle.addEventListener('click', () => {
+        navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
         });
 
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                mobileToggle.classList.remove('active');
             });
         });
 
         // Sticky Header on Scroll
-        const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
@@ -1044,118 +1099,85 @@
             }
         });
 
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offset = 80;
-                    const targetPosition = target.offsetTop - offset;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
         // Counter Animation
         const counters = document.querySelectorAll('.stat-number');
-        let countedOnce = false;
+        const speed = 200; // Lower is faster
+        let counted = false;
 
         const animateCounters = () => {
-            const statsSection = document.querySelector('.stats');
-            const sectionPos = statsSection.getBoundingClientRect().top;
-            const screenPos = window.innerHeight / 1.3;
+            if (counted) return;
 
-            if (sectionPos < screenPos && !countedOnce) {
-                countedOnce = true;
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    const duration = 2000;
-                    const increment = target / (duration / 16);
-                    let current = 0;
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const increment = target / speed;
 
-                    const updateCounter = () => {
-                        current += increment;
-                        if (current < target) {
-                            counter.textContent = Math.floor(current).toLocaleString() + '+';
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.textContent = target.toLocaleString() + '+';
-                        }
-                    };
+                const updateCount = () => {
+                    const current = +counter.innerText.replace(/,/g, '');
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current + increment).toLocaleString();
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target.toLocaleString() + '+';
+                    }
+                };
 
-                    updateCounter();
-                });
-            }
+                updateCount();
+            });
+
+            counted = true;
         };
 
-        window.addEventListener('scroll', animateCounters);
-        animateCounters(); // Check on load
-
-        // Testimonials Carousel
-        const testimonialTrack = document.getElementById('testimonialTrack');
-        const testimonialDots = document.getElementById('testimonialDots');
-        const testimonials = document.querySelectorAll('.testimonial-item');
-        let currentTestimonial = 0;
-
-        // Create dots
-        testimonials.forEach((_, index) => {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToTestimonial(index));
-            testimonialDots.appendChild(dot);
-        });
-
-        const dots = document.querySelectorAll('.dot');
-
-        function goToTestimonial(index) {
-            currentTestimonial = index;
-            testimonialTrack.style.transform = `translateX(-${index * 100}%)`;
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-        }
-
-        function nextTestimonial() {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            goToTestimonial(currentTestimonial);
-        }
-
-        // Auto-rotate testimonials
-        setInterval(nextTestimonial, 5000);
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
+        // Intersection Observer for Counter Animation
+        const statsSection = document.querySelector('.stats');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    animateCounters();
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.5 });
 
-        // Observe service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+        observer.observe(statsSection);
+
+        // Testimonial Carousel
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-item');
+        const dots = document.querySelectorAll('.testimonial-dot');
+
+        const showTestimonial = (index) => {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        };
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentTestimonial = parseInt(dot.getAttribute('data-index'));
+                showTestimonial(currentTestimonial);
+            });
         });
 
-        // Observe portfolio items
-        document.querySelectorAll('.portfolio-item').forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(30px)';
-            item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            observer.observe(item);
+        // Auto-rotate testimonials every 5 seconds
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
