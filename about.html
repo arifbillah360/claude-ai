@@ -12,13 +12,26 @@
            CSS VARIABLES & RESET
            ============================================ */
         :root {
-            --primary-color: #064D4C;
-            --secondary-color: #E0DCC8;
-            --background: #F8F8F8;
+            /* New Brand Color Palette */
+            --primary: #D62828;
+            --secondary: #1A1A1A;
+            --accent: #E8C547;
+            --bg-light: #F7F7F7;
+            --text-dark: #4A4A4A;
+            --border-light: #DDDDDD;
             --white: #FFF;
             --black: #000;
-            --dark-footer: #032C2B;
-            --font-main: 'Helvetica Neue', Helvetica, sans-serif;
+
+            /* Legacy color mappings */
+            --primary-color: var(--primary);
+            --secondary-color: var(--accent);
+            --background: var(--bg-light);
+            --dark-footer: var(--secondary);
+
+            /* Font System */
+            --font-main: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            /* Transitions */
             --transition: all 0.3s ease;
         }
 
@@ -36,7 +49,7 @@
             font-family: var(--font-main);
             font-size: 16px;
             line-height: 1.6;
-            color: var(--black);
+            color: var(--text-dark);
             background: var(--background);
             overflow-x: hidden;
         }
@@ -296,7 +309,7 @@
             left: 0;
             width: 80px;
             height: 4px;
-            background: var(--secondary-color);
+            background: var(--accent);
         }
 
         .story-content h3 {
@@ -348,7 +361,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             position: relative;
             transition: var(--transition);
-            border-left: 5px solid var(--secondary-color);
+            border-left: 5px solid var(--accent);
         }
 
         .mv-card:hover {
@@ -448,13 +461,13 @@
             border-radius: 50%;
             margin: 0 auto 30px;
             overflow: hidden;
-            border: 5px solid var(--secondary-color);
+            border: 5px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             transition: var(--transition);
         }
 
         .team-card:hover .team-photo {
-            border-color: var(--primary-color);
+            border-color: var(--primary);
             box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
 
@@ -531,7 +544,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: var(--secondary-color);
+            background: var(--accent);
             transform: scaleX(0);
             transform-origin: left;
             transition: var(--transition);
@@ -571,7 +584,7 @@
         .factory-highlight {
             position: relative;
             height: 600px;
-            background: linear-gradient(rgba(6, 77, 76, 0.85), rgba(6, 77, 76, 0.85)), url('images/about/factory-floor.jpg') center/cover fixed;
+            background: linear-gradient(rgba(214, 40, 40, 0.85), rgba(26, 26, 26, 0.85)), url('images/about/factory-floor.jpg') center/cover fixed;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -610,7 +623,7 @@
             font-size: 42px;
             font-weight: 700;
             margin-bottom: 10px;
-            color: var(--secondary-color);
+            color: var(--accent);
         }
 
         .factory-stat p {
@@ -647,17 +660,17 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            background: var(--primary-color);
+            background: var(--primary);
             color: var(--white);
             border-radius: 4px;
             transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(6, 77, 76, 0.3);
+            box-shadow: 0 10px 30px rgba(214, 40, 40, 0.3);
         }
 
         .btn:hover {
-            background: #053d3c;
+            background: #B51E1E;
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(6, 77, 76, 0.4);
+            box-shadow: 0 15px 40px rgba(214, 40, 40, 0.4);
         }
 
         .btn::after {
@@ -688,6 +701,7 @@
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: -0.5px;
+            color: var(--accent);
         }
 
         .footer-column p {
@@ -713,7 +727,7 @@
 
         .footer-links a:hover {
             opacity: 1;
-            color: var(--secondary-color);
+            color: var(--accent);
             padding-left: 5px;
         }
 
@@ -736,7 +750,7 @@
         }
 
         .social-links a:hover {
-            background: var(--primary-color);
+            background: var(--primary);
             transform: translateY(-3px);
         }
 
