@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Film - Manhattan Film Festival 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ================================
+           CSS VARIABLES & RESET
+        ================================ */
+        :root {
+            --primary: #D62828;
+            --secondary: #1A1A1A;
+            --accent: #E8C547;
+            --bg-light: #F7F7F7;
+            --text-dark: #4A4A4A;
+            --border-gray: #DDDDDD;
+            --btn-primary: #D62828;
+            --btn-hover: #B51E1E;
+            --font-main: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* ================================
+           GLOBAL HEADER (STICKY)
+        ================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+            margin-left: 0.3rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        /* ================================
+           HERO SECTION
+        ================================ */
+        .hero-submit {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), #b51e1e);
+            color: #fff;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+            opacity: 0.15;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 25%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        .hero-content-submit {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-content-submit h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero-content-submit .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            background: #fff;
+            color: var(--primary);
+            padding: 1.3rem 3.5rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(214, 40, 40, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-hero:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-hero span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ================================
+           SECTION STYLES
+        ================================ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-white {
+            background: #fff;
+        }
+
+        .section-gray {
+            background: var(--bg-light);
+        }
+
+        .section-dark {
+            background: var(--secondary);
+            color: #fff;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .section-dark .section-title {
+            color: #fff;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* ================================
+           BENEFITS GRID
+        ================================ */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .benefit-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* ================================
+           CATEGORIES SECTION
+        ================================ */
+        .categories-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .category-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            transition: background 0.3s ease;
+        }
+
+        .category-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .category-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .category-item p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ================================
+           TIMELINE / DEADLINES
+        ================================ */
+        .deadlines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .deadline-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--primary);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .deadline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .deadline-card .label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .deadline-card .date {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .deadline-card .fee {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .deadline-card p {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ================================
+           RULES SECTION
+        ================================ */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .rule-box {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .rule-box h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .rule-box h3 span {
+            font-size: 1.8rem;
+        }
+
+        .rule-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .rule-box ul li {
+            padding: 0.8rem 0;
+            color: var(--text-dark);
+            line-height: 1.7;
+            border-bottom: 1px solid var(--border-gray);
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .rule-box ul li:last-child {
+            border-bottom: none;
+        }
+
+        .rule-box ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ================================
+           ALUMNI SECTION
+        ================================ */
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .alumni-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .alumni-card .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .alumni-card .filmmaker {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .alumni-card .film-title {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* ================================
+           CTA SECTION
+        ================================ */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--secondary), #2a2a2a);
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+            opacity: 0.1;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(214, 40, 40, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 2px solid #fff;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ================================
+           FOOTER
+        ================================ */
+        .footer {
+            background: var(--secondary);
+            color: #fff;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ================================
+           RESPONSIVE DESIGN
+        ================================ */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(8px, -8px);
+            }
+
+            .hero-content-submit h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content-submit h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ================================
+         GLOBAL HEADER
+    ================================ -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">MFF <span>2026</span></div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="genres.html">Genres</a></li>
+                <li><a href="submit.html" class="active">Submit</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="advertise.html">Advertise</a></li>
+                <li><a href="sponsor.html">Sponsor</a></li>
+                <li><a href="press.html">Press</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================================
+         HERO SECTION
+    ================================ -->
+    <section class="hero-submit">
+        <div class="hero-content-submit">
+            <div class="hero-badge">20TH ANNIVERSARY EDITION</div>
+            <h1>Submit Your Film</h1>
+            <p class="subtitle">
+                Join 20 years of cinematic excellence. Submit your film to Manhattan's premier independent film festival.
+            </p>
+            <a href="https://filmfreeway.com" target="_blank" class="btn-hero">
+                <span>Submit on FilmFreeway →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ================================
+         WHY SUBMIT SECTION
+    ================================ -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">Why Submit to MFF 2026?</h2>
+            <p class="section-subtitle">
+                Our 20th anniversary edition offers filmmakers unprecedented exposure, industry connections,
+                and the prestige of screening in the heart of New York City.
+            </p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏆</div>
+                    <h3>Oscar-Qualifying</h3>
+                    <p>
+                        MFF is an Academy Award qualifying festival for short films. Winners are eligible
+                        for Oscar consideration in their respective categories.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌟</div>
+                    <h3>NYC Exposure</h3>
+                    <p>
+                        Screen your work in Manhattan's iconic venues — Cinema Village, Angelika Film Center,
+                        and IFC Center — reaching passionate NYC film audiences.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎬</div>
+                    <h3>Industry Access</h3>
+                    <p>
+                        Connect with distributors, agents, producers, and press. Our Q&A sessions and
+                        networking events put you directly in front of decision-makers.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Alumni Success</h3>
+                    <p>
+                        MFF alumni have gone on to Sundance, Tribeca, Cannes, and major distribution deals.
+                        Join a network of 3,000+ filmmakers who launched careers here.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Cash Prizes</h3>
+                    <p>
+                        Over $50,000 in cash prizes and awards across all categories, plus in-kind services
+                        from our industry partners worth $100,000+.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📰</div>
+                    <h3>Press Coverage</h3>
+                    <p>
+                        Festival selections receive press kit support, media coverage from major outlets,
+                        and social media promotion to our 50,000+ followers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         CATEGORIES SECTION
+    ================================ -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Categories & Awards</h2>
+            <p class="section-subtitle">
+                We accept films across nine competitive categories. Each category awards Best Film,
+                with additional special jury prizes and audience awards.
+            </p>
+
+            <div class="categories-list">
+                <div class="category-item">
+                    <h4>🎭 Drama</h4>
+                    <p>Narrative features & shorts</p>
+                </div>
+                <div class="category-item">
+                    <h4>😂 Comedy</h4>
+                    <p>Comedic features & shorts</p>
+                </div>
+                <div class="category-item">
+                    <h4>📽️ Documentary</h4>
+                    <p>Feature & short documentaries</p>
+                </div>
+                <div class="category-item">
+                    <h4>👻 Horror</h4>
+                    <p>Horror & thriller films</p>
+                </div>
+                <div class="category-item">
+                    <h4>🎨 Animation</h4>
+                    <p>Animated features & shorts</p>
+                </div>
+                <div class="category-item">
+                    <h4>🌀 Experimental</h4>
+                    <p>Avant-garde & experimental</p>
+                </div>
+                <div class="category-item">
+                    <h4>🎓 Student Films</h4>
+                    <p>All genres, student-made</p>
+                </div>
+                <div class="category-item">
+                    <h4>🎮 Gaming / Interactive</h4>
+                    <p>Interactive media & VR</p>
+                </div>
+                <div class="category-item">
+                    <h4>🌍 International</h4>
+                    <p>Foreign language films</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         DEADLINES SECTION
+    ================================ -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Submission Deadlines & Fees</h2>
+            <p class="section-subtitle">
+                Early submission saves money and ensures priority consideration. All deadlines are at 11:59 PM EST.
+            </p>
+
+            <div class="deadlines-grid">
+                <div class="deadline-card">
+                    <div class="label">Early Bird</div>
+                    <div class="date">Dec 15, 2025</div>
+                    <div class="fee">$35</div>
+                    <p>Best value! Submit early for lowest fees and priority review.</p>
+                </div>
+
+                <div class="deadline-card">
+                    <div class="label">Regular</div>
+                    <div class="date">Feb 28, 2026</div>
+                    <div class="fee">$50</div>
+                    <p>Standard deadline with full consideration for all categories.</p>
+                </div>
+
+                <div class="deadline-card">
+                    <div class="label">Late</div>
+                    <div class="date">Apr 15, 2026</div>
+                    <div class="fee">$65</div>
+                    <p>Final deadline. Limited slots available for late submissions.</p>
+                </div>
+
+                <div class="deadline-card">
+                    <div class="label">Extended</div>
+                    <div class="date">May 1, 2026</div>
+                    <div class="fee">$85</div>
+                    <p>Last chance! Extended deadline for exceptional films only.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         RULES SECTION
+    ================================ -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">Rules & Eligibility</h2>
+            <p class="section-subtitle">
+                Please review our submission guidelines carefully before submitting your film.
+            </p>
+
+            <div class="rules-grid">
+                <div class="rule-box">
+                    <h3><span>📋</span> General Requirements</h3>
+                    <ul>
+                        <li>Films must be completed after January 1, 2023</li>
+                        <li>No length restrictions for features or shorts</li>
+                        <li>All genres and formats accepted</li>
+                        <li>International films must have English subtitles</li>
+                        <li>Works-in-progress not accepted</li>
+                    </ul>
+                </div>
+
+                <div class="rule-box">
+                    <h3><span>🎬</span> Premiere Status</h3>
+                    <ul>
+                        <li>NYC premiere preferred but not required</li>
+                        <li>Films may have screened at other festivals</li>
+                        <li>Online/streaming premieres do not disqualify</li>
+                        <li>Theatrical releases must be disclosed</li>
+                        <li>Student films exempt from premiere requirements</li>
+                    </ul>
+                </div>
+
+                <div class="rule-box">
+                    <h3><span>📤</span> Submission Format</h3>
+                    <ul>
+                        <li>Submit via FilmFreeway platform only</li>
+                        <li>Upload screener in HD quality (1080p minimum)</li>
+                        <li>Include trailer, stills, and press kit</li>
+                        <li>Provide filmmaker bio and director statement</li>
+                        <li>DCP or ProRes required if selected</li>
+                    </ul>
+                </div>
+
+                <div class="rule-box">
+                    <h3><span>⚖️</span> Rights & Obligations</h3>
+                    <ul>
+                        <li>Filmmakers retain all rights to their work</li>
+                        <li>MFF may use clips for promotional purposes</li>
+                        <li>Selected filmmakers must attend or send representative</li>
+                        <li>Submission fees are non-refundable</li>
+                        <li>Decisions of jury and programmers are final</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         ALUMNI SUCCESS SECTION
+    ================================ -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Alumni Success Stories</h2>
+            <p class="section-subtitle">
+                Hear from filmmakers who launched their careers at Manhattan Film Festival.
+            </p>
+
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <p class="quote">
+                        "MFF was the launchpad for my career. After winning Best Documentary, we secured
+                        distribution and went on to screen at 40+ festivals worldwide."
+                    </p>
+                    <div class="filmmaker">Sarah Chen</div>
+                    <div class="film-title">"Voices Unheard" — Best Documentary 2021</div>
+                </div>
+
+                <div class="alumni-card">
+                    <p class="quote">
+                        "The industry connections I made at MFF were invaluable. Within six months,
+                        I had an agent and my first feature in development."
+                    </p>
+                    <div class="filmmaker">Marcus Williams</div>
+                    <div class="film-title">"Brooklyn Stories" — Audience Award 2019</div>
+                </div>
+
+                <div class="alumni-card">
+                    <p class="quote">
+                        "Winning at MFF put us on the map. We went from a student film to Sundance,
+                        and now we're in post-production on our second feature."
+                    </p>
+                    <div class="filmmaker">Elena Rodriguez</div>
+                    <div class="film-title">"The Last Train" — Best Student Film 2020</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         CTA SECTION
+    ================================ -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Submit?</h2>
+            <p>
+                Join the 20th anniversary celebration. Submit your film today and be part of
+                Manhattan's most prestigious independent film festival.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://filmfreeway.com" target="_blank" class="btn-primary">Submit on FilmFreeway</a>
+                <a href="book.html" class="btn-secondary">Or Book a Sponsored Screening</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+    ================================ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>About MFF</h4>
+                    <p>
+                        The Manhattan Film Festival celebrates independent cinema from around the world.
+                        Join us June 12-22, 2026 for our 20th anniversary edition.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="YouTube">▶</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="genres.html">Genres</a></li>
+                        <li><a href="submit.html">Submit Your Film</a></li>
+                        <li><a href="book.html">Book Screening</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>For Filmmakers</h4>
+                    <ul>
+                        <li><a href="submit.html">Submission Guidelines</a></li>
+                        <li><a href="#">Entry Fees</a></li>
+                        <li><a href="#">Festival Rules</a></li>
+                        <li><a href="#">Past Winners</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Partners</h4>
+                    <ul>
+                        <li><a href="sponsor.html">Become a Sponsor</a></li>
+                        <li><a href="advertise.html">Advertising</a></li>
+                        <li><a href="press.html">Press & Media</a></li>
+                        <li><a href="#">Industry Partners</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="contact.html">General Inquiries</a></li>
+                        <li><a href="mailto:info@manhattanfilmfestival.com">info@manhattanfilmfestival.com</a></li>
+                        <li><a href="tel:+12125551234">(212) 555-1234</a></li>
+                        <li><a href="#">22 E 12th St, NYC</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Manhattan Film Festival. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================ -->
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all benefit cards
+        document.querySelectorAll('.benefit-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

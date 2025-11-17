@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Login - Manhattan Film Festival 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #D62828; --secondary: #1A1A1A; --accent: #E8C547; --bg-light: #F7F7F7; --text-dark: #4A4A4A; --font-main: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); color: var(--text-dark); line-height: 1.6; background: var(--bg-light); overflow-x: hidden; }
+        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 900; color: #fff; letter-spacing: 1px; }
+        .logo span { color: var(--primary); margin-left: 0.3rem; }
+        .nav-menu { display: flex; list-style: none; gap: 2.5rem; }
+        .nav-menu a { text-decoration: none; color: #fff; font-weight: 500; font-size: 0.95rem; transition: color 0.3s ease; position: relative; }
+        .nav-menu a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s ease; }
+        .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--primary); }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .hamburger span { width: 25px; height: 3px; background: #fff; transition: 0.3s; }
+        .login-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--secondary), #2a2a2a); padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
+        .login-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E"); opacity: 0.1; pointer-events: none; animation: grain 8s steps(10) infinite; }
+        @keyframes grain { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(-10%, 5%); } 50% { transform: translate(5%, -10%); } 75% { transform: translate(-5%, 10%); } }
+        .login-box { position: relative; z-index: 2; background: #fff; padding: 3rem; border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); max-width: 500px; width: 100%; }
+        .login-box h1 { font-size: 2.5rem; font-weight: 900; color: var(--secondary); margin-bottom: 0.5rem; text-align: center; }
+        .login-box p { text-align: center; color: var(--text-dark); margin-bottom: 2.5rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-weight: 600; color: var(--secondary); margin-bottom: 0.5rem; }
+        .form-group input { width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-family: var(--font-main); font-size: 1rem; transition: border-color 0.3s ease; }
+        .form-group input:focus { outline: none; border-color: var(--primary); }
+        .btn-login { width: 100%; background: var(--primary); color: #fff; padding: 1.1rem; font-size: 1.1rem; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s ease, transform 0.3s ease; }
+        .btn-login:hover { background: #b51e1e; transform: translateY(-2px); }
+        .error-message { background: #ffe6e6; color: #d62828; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; display: none; }
+        .content-area { display: none; padding: 6rem 2rem; background: #fff; min-height: 100vh; }
+        .content-area.visible { display: block; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 3rem; font-weight: 900; color: var(--secondary); margin-bottom: 1.5rem; text-align: center; letter-spacing: -1px; }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+        .resource-card { background: var(--bg-light); padding: 2.5rem; border-radius: 12px; border-left: 4px solid var(--primary); }
+        .resource-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--secondary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+        .resource-card p { color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem; }
+        .btn-download { display: inline-block; background: var(--primary); color: #fff; padding: 0.8rem 2rem; font-size: 0.95rem; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background 0.3s ease; }
+        .btn-download:hover { background: #b51e1e; }
+        .logout-btn { display: inline-block; background: var(--secondary); color: #fff; padding: 0.8rem 2rem; font-size: 0.95rem; font-weight: 600; border-radius: 8px; text-decoration: none; margin: 2rem 0; cursor: pointer; }
+        .footer { background: var(--secondary); color: #fff; padding: 4rem 2rem 2rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
+        .footer-column h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary); }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 0.8rem; }
+        .footer-column ul li a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; font-size: 0.95rem; }
+        .footer-column ul li a:hover { color: var(--primary); }
+        .footer-column p { color: rgba(255, 255, 255, 0.8); line-height: 1.7; font-size: 0.95rem; }
+        .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; color: #fff; text-decoration: none; transition: background 0.3s ease, transform 0.3s ease; }
+        .social-links a:hover { background: var(--primary); transform: translateY(-3px); }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; }
+        @media (max-width: 968px) {
+            .nav-menu { position: fixed; top: 0; right: -100%; width: 300px; height: 100vh; background: var(--secondary); flex-direction: column; padding: 5rem 2rem; gap: 2rem; transition: right 0.3s ease; box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3); }
+            .nav-menu.active { right: 0; }
+            .hamburger { display: flex; z-index: 1001; }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
+            .login-box h1 { font-size: 2rem; }
+            .section-title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">MFF <span>2026</span></div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="genres.html">Genres</a></li>
+                <li><a href="submit.html">Submit</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="advertise.html">Advertise</a></li>
+                <li><a href="sponsor.html" class="active">Sponsor</a></li>
+                <li><a href="press.html">Press</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </nav>
+    </header>
+
+    <!-- LOGIN SCREEN -->
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <h1>🔒 Sponsor Login</h1>
+            <p>Access sponsor resources, media kit, and partnership materials</p>
+            <div class="error-message" id="errorMessage">Incorrect password. Please try again.</div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter sponsor password" required>
+                </div>
+                <button type="submit" class="btn-login">Access Sponsor Portal</button>
+            </form>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">Don't have access? <a href="contact.html" style="color: var(--primary); font-weight: 600;">Contact us</a></p>
+        </div>
+    </div>
+
+    <!-- PROTECTED CONTENT -->
+    <div class="content-area" id="protectedContent">
+        <div class="container">
+            <h1 class="section-title">Sponsor Resources</h1>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; color: var(--text-dark);">
+                Welcome to the MFF 2026 Sponsor Portal. Access all partnership materials, contracts, and branding assets.
+            </p>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>📄 Sponsor Deck</h3>
+                    <p>Complete sponsorship package overview with benefits, audience demographics, and partnership tiers</p>
+                    <a href="#" class="btn-download">Download PDF</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>💰 Rate Sheet</h3>
+                    <p>Detailed pricing for all sponsorship levels, advertising options, and custom partnership packages</p>
+                    <a href="#" class="btn-download">Download PDF</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>📋 Media Kit</h3>
+                    <p>Festival statistics, press coverage, audience insights, and promotional materials</p>
+                    <a href="#" class="btn-download">Download ZIP</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>✍️ Sponsor Contract</h3>
+                    <p>Standard sponsorship agreement template and terms & conditions</p>
+                    <a href="#" class="btn-download">Download PDF</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>💳 Payment Portal</h3>
+                    <p>Secure online payment system for sponsorship fees and invoices</p>
+                    <a href="#" class="btn-download">Access Portal</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>🎨 Brand Assets</h3>
+                    <p>MFF 2026 logos, sponsor logo specifications, and brand guidelines</p>
+                    <a href="#" class="btn-download">Download ZIP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>About MFF</h4>
+                    <p>The Manhattan Film Festival celebrates independent cinema from around the world. Join us June 12-22, 2026 for our 20th anniversary edition.</p>
+                    <div class="social-links"><a href="#">f</a><a href="#">𝕏</a><a href="#">📷</a><a href="#">▶</a></div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="genres.html">Genres</a></li>
+                        <li><a href="submit.html">Submit Your Film</a></li>
+                        <li><a href="book.html">Book Screening</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For Filmmakers</h4>
+                    <ul>
+                        <li><a href="submit.html">Submission Guidelines</a></li>
+                        <li><a href="#">Entry Fees</a></li>
+                        <li><a href="#">Festival Rules</a></li>
+                        <li><a href="#">Past Winners</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Partners</h4>
+                    <ul>
+                        <li><a href="sponsor.html">Become a Sponsor</a></li>
+                        <li><a href="advertise.html">Advertising</a></li>
+                        <li><a href="press.html">Press & Media</a></li>
+                        <li><a href="#">Industry Partners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="contact.html">General Inquiries</a></li>
+                        <li><a href="mailto:info@manhattanfilmfestival.com">info@manhattanfilmfestival.com</a></li>
+                        <li><a href="tel:+12125551234">(212) 555-1234</a></li>
+                        <li><a href="#">22 E 12th St, NYC</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Manhattan Film Festival. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const loginForm = document.getElementById('loginForm');
+        const loginScreen = document.getElementById('loginScreen');
+        const protectedContent = document.getElementById('protectedContent');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Mobile menu
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); });
+        document.querySelectorAll('.nav-menu a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); navMenu.classList.remove('active'); }); });
+
+        // Check if already logged in
+        if (sessionStorage.getItem('sponsorLoggedIn') === 'true') {
+            showContent();
+        }
+
+        // Login form handler
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+
+            // Demo password - In production, use server-side authentication
+            if (password === 'MFF2026Sponsor') {
+                sessionStorage.setItem('sponsorLoggedIn', 'true');
+                showContent();
+            } else {
+                errorMessage.style.display = 'block';
+                document.getElementById('password').value = '';
+            }
+        });
+
+        function showContent() {
+            loginScreen.style.display = 'none';
+            protectedContent.classList.add('visible');
+        }
+
+        function logout() {
+            sessionStorage.removeItem('sponsorLoggedIn');
+            location.reload();
+        }
+    </script>
+</body>
+</html>
