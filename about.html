@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Manhattan Film Festival 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ================================
+           CSS VARIABLES & RESET
+        ================================ */
+        :root {
+            --primary: #D62828;
+            --secondary: #1A1A1A;
+            --accent: #E8C547;
+            --bg-light: #F7F7F7;
+            --text-dark: #4A4A4A;
+            --border-gray: #DDDDDD;
+            --btn-primary: #D62828;
+            --btn-hover: #B51E1E;
+            --font-main: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* ================================
+           GLOBAL HEADER (STICKY)
+        ================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+            margin-left: 0.3rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        /* ================================
+           HERO SECTION
+        ================================ */
+        .hero-about {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--secondary) 0%, #2a2a2a 100%);
+            color: #fff;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+            opacity: 0.15;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 25%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        .hero-content-about {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-content-about h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero-content-about .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+        }
+
+        .anniversary-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* ================================
+           MISSION SECTION
+        ================================ */
+        .mission-section {
+            padding: 6rem 2rem;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .mission-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .mission-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .mission-card p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .mission-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ================================
+           TIMELINE SECTION
+        ================================ */
+        .timeline-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, #2a2a2a 100%);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+            opacity: 0.1;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-section .section-title {
+            color: #fff;
+        }
+
+        .timeline-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: left;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 40px rgba(214, 40, 40, 0.3);
+        }
+
+        .timeline-year {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        .timeline-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--secondary);
+            z-index: 10;
+        }
+
+        /* ================================
+           LOCATION SECTION
+        ================================ */
+        .location-section {
+            padding: 6rem 2rem;
+            background: #fff;
+        }
+
+        .venue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .venue-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .venue-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .venue-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .venue-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--secondary), #3a3a3a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .venue-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .venue-content {
+            padding: 2rem;
+        }
+
+        .venue-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .venue-content .address {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .venue-content p {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-link {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .map-link:hover {
+            color: var(--btn-hover);
+        }
+
+        /* ================================
+           STATS SECTION
+        ================================ */
+        .stats-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary), #b51e1e);
+            color: #fff;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ================================
+           FOOTER
+        ================================ */
+        .footer {
+            background: var(--secondary);
+            color: #fff;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ================================
+           RESPONSIVE DESIGN
+        ================================ */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(8px, -8px);
+            }
+
+            .hero-content-about h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                text-align: left !important;
+                padding-left: 2rem;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-marker {
+                left: 0;
+                transform: translateX(0);
+            }
+
+            .stats-grid {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content-about h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content-about .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .mission-grid,
+            .venue-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ================================
+           SCROLL ANIMATIONS
+        ================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- ================================
+         GLOBAL HEADER
+    ================================ -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">MFF <span>2026</span></div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="genres.html">Genres</a></li>
+                <li><a href="submit.html">Submit</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="advertise.html">Advertise</a></li>
+                <li><a href="sponsor.html">Sponsor</a></li>
+                <li><a href="press.html">Press</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================================
+         HERO SECTION
+    ================================ -->
+    <section class="hero-about">
+        <div class="hero-content-about">
+            <h1>About Manhattan Film Festival</h1>
+            <p class="subtitle">Celebrating 20 years of independent cinema in the heart of New York City</p>
+            <span class="anniversary-tag">EST. 2006</span>
+        </div>
+    </section>
+
+    <!-- ================================
+         MISSION SECTION
+    ================================ -->
+    <section class="mission-section">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <p class="section-subtitle">
+                The Manhattan Film Festival is dedicated to discovering, nurturing, and showcasing independent filmmakers
+                from around the world. We champion bold storytelling, diverse voices, and cinematic innovation.
+            </p>
+
+            <div class="mission-grid">
+                <div class="mission-card fade-in">
+                    <div class="mission-icon">🎬</div>
+                    <h3>Discover New Voices</h3>
+                    <p>
+                        We seek out emerging filmmakers who push boundaries and challenge conventions.
+                        Our platform gives first-time directors and seasoned auteurs alike a space to share their vision
+                        with passionate audiences.
+                    </p>
+                </div>
+
+                <div class="mission-card fade-in">
+                    <div class="mission-icon">🌍</div>
+                    <h3>Global Perspectives</h3>
+                    <p>
+                        From intimate documentaries to bold experimental features, we celebrate stories from every corner
+                        of the globe. Our festival reflects the diversity of human experience through the lens of cinema.
+                    </p>
+                </div>
+
+                <div class="mission-card fade-in">
+                    <div class="mission-icon">🏆</div>
+                    <h3>Elevate Excellence</h3>
+                    <p>
+                        Through awards, networking, and industry connections, we help filmmakers take their careers to
+                        the next level. Many of our alumni have gone on to major festivals and distribution deals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         TIMELINE SECTION - 20 YEARS
+    ================================ -->
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <h2 class="section-title">20 Years of Indie Cinema in NYC</h2>
+            <p class="section-subtitle">
+                Two decades of groundbreaking films, unforgettable moments, and a thriving community of storytellers.
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2006</div>
+                        <h3>The Beginning</h3>
+                        <p>
+                            MFF launches at Cinema Village with 42 films from 12 countries. The festival's mission:
+                            to give independent filmmakers a platform in the heart of Manhattan.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2010</div>
+                        <h3>Expanding Horizons</h3>
+                        <p>
+                            The festival grows to 10 days, adds screenplay competition, and partners with NYU and Columbia
+                            Film Schools. Attendance reaches 5,000 for the first time.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2014</div>
+                        <h3>Industry Recognition</h3>
+                        <p>
+                            MFF-premiered films go on to Sundance, Tribeca, and Cannes. The festival becomes an
+                            Oscar-qualifying event for short films, cementing its industry reputation.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2018</div>
+                        <h3>Digital Innovation</h3>
+                        <p>
+                            Launch of virtual screening room and filmmaker masterclasses. The festival embraces hybrid
+                            formats while maintaining the intimacy of in-person premieres.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022</div>
+                        <h3>Record-Breaking Year</h3>
+                        <p>
+                            Over 200 films screened from 40+ countries. Sponsored screenings program launches,
+                            connecting brands with filmmakers. 15,000+ attendees across 11 days.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2026</div>
+                        <h3>20th Anniversary</h3>
+                        <p>
+                            Celebrating two decades of independent cinema with our most ambitious program yet.
+                            New venues, expanded categories, and a special retrospective of past winners.
+                            June 12-22, 2026.
+                        </p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         STATS SECTION
+    ================================ -->
+    <section class="stats-section">
+        <h2 class="section-title">Two Decades of Impact</h2>
+        <div class="stats-grid">
+            <div class="stat-item fade-in">
+                <div class="stat-number">3,000+</div>
+                <div class="stat-label">Films Screened</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">50,000+</div>
+                <div class="stat-label">Total Attendees</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">75+</div>
+                <div class="stat-label">Countries Represented</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Award Winners</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         LOCATION SECTION
+    ================================ -->
+    <section class="location-section">
+        <div class="container">
+            <h2 class="section-title">Our Venues</h2>
+            <p class="section-subtitle">
+                Experience world-class independent cinema in iconic Manhattan locations, from historic theaters
+                to cutting-edge screening rooms.
+            </p>
+
+            <div class="venue-grid">
+                <div class="venue-card fade-in">
+                    <div class="venue-image">🎭</div>
+                    <div class="venue-content">
+                        <h3>Cinema Village</h3>
+                        <p class="address">📍 22 E 12th St, New York, NY 10003</p>
+                        <p>
+                            Our flagship venue and festival home since 2006. This intimate three-screen cinema in
+                            Greenwich Village has been showcasing independent film for over 50 years.
+                        </p>
+                        <a href="https://goo.gl/maps/example" class="map-link" target="_blank">View on Map →</a>
+                    </div>
+                </div>
+
+                <div class="venue-card fade-in">
+                    <div class="venue-image">🏛️</div>
+                    <div class="venue-content">
+                        <h3>Angelika Film Center</h3>
+                        <p class="address">📍 18 W Houston St, New York, NY 10012</p>
+                        <p>
+                            A SoHo landmark offering state-of-the-art projection and sound. Home to our opening night
+                            galas, industry panels, and special 20th anniversary retrospectives.
+                        </p>
+                        <a href="https://goo.gl/maps/example" class="map-link" target="_blank">View on Map →</a>
+                    </div>
+                </div>
+
+                <div class="venue-card fade-in">
+                    <div class="venue-image">🎬</div>
+                    <div class="venue-content">
+                        <h3>IFC Center</h3>
+                        <p class="address">📍 323 6th Ave, New York, NY 10014</p>
+                        <p>
+                            Five screens in the West Village dedicated to independent and foreign cinema.
+                            Hosts our documentary showcases and late-night experimental film programs.
+                        </p>
+                        <a href="https://goo.gl/maps/example" class="map-link" target="_blank">View on Map →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+    ================================ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>About MFF</h4>
+                    <p>
+                        The Manhattan Film Festival celebrates independent cinema from around the world.
+                        Join us June 12-22, 2026 for our 20th anniversary edition.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="YouTube">▶</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="genres.html">Genres</a></li>
+                        <li><a href="submit.html">Submit Your Film</a></li>
+                        <li><a href="book.html">Book Screening</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>For Filmmakers</h4>
+                    <ul>
+                        <li><a href="submit.html">Submission Guidelines</a></li>
+                        <li><a href="#">Entry Fees</a></li>
+                        <li><a href="#">Festival Rules</a></li>
+                        <li><a href="#">Past Winners</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Partners</h4>
+                    <ul>
+                        <li><a href="sponsor.html">Become a Sponsor</a></li>
+                        <li><a href="advertise.html">Advertising</a></li>
+                        <li><a href="press.html">Press & Media</a></li>
+                        <li><a href="#">Industry Partners</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="contact.html">General Inquiries</a></li>
+                        <li><a href="mailto:info@manhattanfilmfestival.com">info@manhattanfilmfestival.com</a></li>
+                        <li><a href="tel:+12125551234">(212) 555-1234</a></li>
+                        <li><a href="#">22 E 12th St, NYC</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Manhattan Film Festival. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================ -->
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in, .mission-card, .timeline-item, .venue-card, .stat-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
