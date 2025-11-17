@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manhattan Film Festival 2026 - Celebrating 20 Years of Independent Cinema in NYC. June 12-22, 2026. Submit your film today!">
+    <meta name="keywords" content="Manhattan Film Festival, MFF 2026, indie films, NYC film festival, 20th anniversary, submit film">
+    <title>Manhattan Film Festival 2026 | 20th Anniversary | June 12-22</title>
+
+    <style>
+        /* ============================================
+           CSS VARIABLES
+           ============================================ */
+        :root {
+            /* Brand Colors */
+            --primary: #D62828;
+            --secondary: #1A1A1A;
+            --accent: #E8C547;
+            --bg-light: #F7F7F7;
+            --text-dark: #4A4A4A;
+            --border-gray: #DDDDDD;
+            --white: #FFFFFF;
+            --black: #000000;
+
+            /* Button Colors */
+            --btn-primary: #D62828;
+            --btn-hover: #B51E1E;
+            --btn-text: #FFFFFF;
+
+            /* Link Colors */
+            --link: #D62828;
+            --link-hover: #B51E1E;
+
+            /* Font System */
+            --font-main: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            /* Transitions */
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--black);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        button {
+            font-family: var(--font-main);
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        /* ============================================
+           GLOBAL HEADER (STICKY)
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .header.scrolled {
+            background: var(--secondary);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        /* ============================================
+           HERO SECTION - 20TH ANNIVERSARY
+           ============================================ */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('/images/home/hero-nyc-festival.jpg') center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        /* Film Grain Effect */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.15;
+            animation: grain 8s steps(10) infinite;
+            pointer-events: none;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            padding: 0 40px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .anniversary-badge {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-radius: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(214, 40, 40, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h1 {
+            font-size: 96px;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--white);
+            margin-bottom: 30px;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero .subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 50px;
+            opacity: 0.95;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 20px 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: var(--btn-primary);
+            color: var(--btn-text);
+            border-radius: 4px;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(214, 40, 40, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            background: var(--btn-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(214, 40, 40, 0.6);
+        }
+
+        .btn-outline {
+            padding: 18px 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: transparent;
+            color: var(--white);
+            border: 3px solid var(--primary);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(214, 40, 40, 0.6);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--white);
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            margin-left: -3px;
+            background: var(--white);
+            border-radius: 50%;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% { opacity: 0; top: 10px; }
+            50% { opacity: 1; }
+            100% { opacity: 0; top: 30px; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           HIGHLIGHT REEL SECTION
+           ============================================ */
+        .highlight-section {
+            padding: 120px 40px;
+            background: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .highlight-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .highlight-reel {
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .reel-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .reel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(214, 40, 40, 0.3);
+            border-color: var(--primary);
+        }
+
+        .reel-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary), #2A2A2A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .reel-caption {
+            padding: 25px;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* ============================================
+           FESTIVAL DATES BLOCK
+           ============================================ */
+        .dates-section {
+            padding: 100px 40px;
+            background: var(--black);
+            text-align: center;
+            position: relative;
+        }
+
+        .dates-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(214, 40, 40, 0.1) 0%, transparent 70%);
+        }
+
+        .dates-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .dates-title {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 40px;
+            letter-spacing: -2px;
+        }
+
+        .dates-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           QUICK LINKS GRID
+           ============================================ */
+        .quick-links-section {
+            padding: 120px 40px;
+            background: var(--bg-light);
+        }
+
+        .quick-links-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .quick-link-card {
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-link-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--primary);
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .quick-link-card:hover::before {
+            height: 100%;
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(214, 40, 40, 0.2);
+        }
+
+        .quick-link-card:hover .link-icon,
+        .quick-link-card:hover .link-title {
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-icon {
+            font-size: 60px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .link-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--secondary);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .link-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .quick-link-card:hover .link-title::after {
+            width: 80px;
+        }
+
+        /* ============================================
+           SPONSORS SECTION
+           ============================================ */
+        .sponsors-section {
+            padding: 100px 40px;
+            background: var(--secondary);
+            text-align: center;
+        }
+
+        .sponsors-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
+        .sponsor-logo {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 8px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .sponsor-logo:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .sponsor-logo-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* ============================================
+           20 YEARS TIMELINE SECTION
+           ============================================ */
+        .timeline-section {
+            padding: 120px 40px;
+            background: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .timeline-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin: 80px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================
+           GENRES GRID
+           ============================================ */
+        .genres-section {
+            padding: 120px 40px;
+            background: var(--bg-light);
+        }
+
+        .genres-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .genres-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .genre-card {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .genre-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary), #2A2A2A);
+            transition: var(--transition);
+        }
+
+        .genre-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .genre-card:hover .genre-image {
+            transform: scale(1.1);
+        }
+
+        .genre-card:hover .genre-overlay {
+            background: linear-gradient(to bottom, rgba(214, 40, 40, 0.7), rgba(0,0,0,0.95));
+        }
+
+        .genre-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .genre-title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        /* ============================================
+           SUBMISSION CTA BLOCK
+           ============================================ */
+        .submission-cta {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--btn-hover));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submission-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: slideRight 3s ease-in-out infinite;
+        }
+
+        @keyframes slideRight {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .submission-cta-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .submission-cta h2 {
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .submission-cta p {
+            font-size: 24px;
+            color: var(--white);
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .btn-large {
+            padding: 25px 70px;
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: var(--white);
+            color: var(--primary);
+            border-radius: 4px;
+            transition: var(--transition);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-large:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 80px 40px 30px;
+            border-top: 4px solid var(--primary);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--secondary);
+                width: 100%;
+                padding: 40px 0;
+                gap: 20px;
+                transition: var(--transition);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .hero .subtitle {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .dates-title {
+                font-size: 48px;
+            }
+
+            .submission-cta h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .stat-number {
+                font-size: 56px;
+            }
+
+            .genres-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .submission-cta h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- GLOBAL HEADER -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">MFF <span>2026</span></div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#genres">Genres</a></li>
+                <li><a href="#submit">Submit</a></li>
+                <li><a href="#screening">Book Sponsored Screening</a></li>
+                <li><a href="#advertise">Advertise</a></li>
+                <li><a href="#login">Sponsor Login</a></li>
+                <li><a href="#press">Press</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="anniversary-badge">20th Anniversary</div>
+            <h1>Manhattan Film<br>Festival 2026</h1>
+            <p class="subtitle">June 12–22, 2026 | Celebrating 20 Years of Indie Cinema in NYC</p>
+            <div class="hero-buttons">
+                <a href="#submit" class="btn-primary">Submit Your Film →</a>
+                <a href="#screening" class="btn-outline">Book a Screening →</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- HIGHLIGHT REEL SECTION -->
+    <section class="highlight-section">
+        <div class="highlight-container">
+            <h2 class="section-title fade-in">A Legacy of Independent Filmmaking</h2>
+            <div class="highlight-reel">
+                <div class="reel-card fade-in">
+                    <div class="reel-image">🏆</div>
+                    <div class="reel-caption">Past Winners</div>
+                </div>
+                <div class="reel-card fade-in">
+                    <div class="reel-image">👥</div>
+                    <div class="reel-caption">Festival Crowds</div>
+                </div>
+                <div class="reel-card fade-in">
+                    <div class="reel-image">📸</div>
+                    <div class="reel-caption">Red Carpet Moments</div>
+                </div>
+                <div class="reel-card fade-in">
+                    <div class="reel-image">🎬</div>
+                    <div class="reel-caption">Filmmaker Q&As</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FESTIVAL DATES BLOCK -->
+    <section class="dates-section">
+        <div class="dates-container fade-in">
+            <h2 class="dates-title">Festival Dates: June 12–22, 2026</h2>
+            <div class="dates-buttons">
+                <a href="#program" class="btn-primary">View Program</a>
+                <a href="#tickets" class="btn-outline" style="opacity: 0.5; cursor: not-allowed;">Buy Tickets (Coming Soon)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK LINKS SECTION -->
+    <section class="quick-links-section">
+        <div class="quick-links-container">
+            <div class="quick-links-grid">
+                <div class="quick-link-card fade-in">
+                    <div class="link-icon">🎥</div>
+                    <h3 class="link-title">Submit Your Film</h3>
+                </div>
+                <div class="quick-link-card fade-in">
+                    <div class="link-icon">🎫</div>
+                    <h3 class="link-title">Book a Screening</h3>
+                </div>
+                <div class="quick-link-card fade-in">
+                    <div class="link-icon">📅</div>
+                    <h3 class="link-title">View Program</h3>
+                </div>
+                <div class="quick-link-card fade-in">
+                    <div class="link-icon">▶️</div>
+                    <h3 class="link-title">Watch 2025 Trailer</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSORS SECTION -->
+    <section class="sponsors-section">
+        <div class="sponsors-container">
+            <h2 class="section-title fade-in">Our Partners & Sponsors</h2>
+            <div class="sponsors-grid">
+                <div class="sponsor-logo fade-in">
+                    <div class="sponsor-logo-text">Sponsor 1</div>
+                </div>
+                <div class="sponsor-logo fade-in">
+                    <div class="sponsor-logo-text">Sponsor 2</div>
+                </div>
+                <div class="sponsor-logo fade-in">
+                    <div class="sponsor-logo-text">Sponsor 3</div>
+                </div>
+                <div class="sponsor-logo fade-in">
+                    <div class="sponsor-logo-text">Sponsor 4</div>
+                </div>
+            </div>
+            <a href="#sponsor" class="btn-primary">Become a Sponsor</a>
+        </div>
+    </section>
+
+    <!-- 20 YEARS TIMELINE SECTION -->
+    <section class="timeline-section" id="about">
+        <div class="timeline-container">
+            <h2 class="section-title fade-in">20 Years of Indie Cinema</h2>
+            <div class="timeline-stats">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">3,000+</div>
+                    <div class="stat-label">Films Screened</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">50,000+</div>
+                    <div class="stat-label">Attendees</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Years Strong</div>
+                </div>
+            </div>
+            <a href="#history" class="btn-primary">Explore the Full History →</a>
+        </div>
+    </section>
+
+    <!-- FEATURED GENRES GRID -->
+    <section class="genres-section" id="genres">
+        <div class="genres-container">
+            <h2 class="section-title fade-in" style="color: var(--secondary);">Featured Genres</h2>
+            <div class="genres-grid">
+                <div class="genre-card fade-in">
+                    <div class="genre-image"></div>
+                    <div class="genre-overlay">
+                        <h3 class="genre-title">Drama</h3>
+                    </div>
+                </div>
+                <div class="genre-card fade-in">
+                    <div class="genre-image"></div>
+                    <div class="genre-overlay">
+                        <h3 class="genre-title">Comedy</h3>
+                    </div>
+                </div>
+                <div class="genre-card fade-in">
+                    <div class="genre-image"></div>
+                    <div class="genre-overlay">
+                        <h3 class="genre-title">Documentary</h3>
+                    </div>
+                </div>
+                <div class="genre-card fade-in">
+                    <div class="genre-image"></div>
+                    <div class="genre-overlay">
+                        <h3 class="genre-title">Horror</h3>
+                    </div>
+                </div>
+                <div class="genre-card fade-in">
+                    <div class="genre-image"></div>
+                    <div class="genre-overlay">
+                        <h3 class="genre-title">Animation</h3>
+                    </div>
+                </div>
+                <div class="genre-card fade-in">
+                    <div class="genre-image"></div>
+                    <div class="genre-overlay">
+                        <h3 class="genre-title">Experimental</h3>
+                    </div>
+                </div>
+                <div class="genre-card fade-in">
+                    <div class="genre-image"></div>
+                    <div class="genre-overlay">
+                        <h3 class="genre-title">Student Films</h3>
+                    </div>
+                </div>
+                <div class="genre-card fade-in">
+                    <div class="genre-image"></div>
+                    <div class="genre-overlay">
+                        <h3 class="genre-title">International</h3>
+                    </div>
+                </div>
+                <div class="genre-card fade-in">
+                    <div class="genre-image"></div>
+                    <div class="genre-overlay">
+                        <h3 class="genre-title">Gaming / Interactive</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBMISSION CTA BLOCK -->
+    <section class="submission-cta" id="submit">
+        <div class="submission-cta-container">
+            <h2>Submit to the 20th Annual<br>Manhattan Film Festival</h2>
+            <p>New York City — June 12–22, 2026</p>
+            <a href="https://filmfreeway.com" target="_blank" class="btn-large">Submit Now on FilmFreeway →</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About MFF</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">About the Festival</a></li>
+                    <li><a href="#history">Our History</a></li>
+                    <li><a href="#team">Festival Team</a></li>
+                    <li><a href="#venues">Venues</a></li>
+                    <li><a href="#awards">Awards</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#submit">Submit Your Film</a></li>
+                    <li><a href="#screening">Book a Screening</a></li>
+                    <li><a href="#program">Festival Program</a></li>
+                    <li><a href="#tickets">Buy Tickets</a></li>
+                    <li><a href="#volunteer">Volunteer</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Press & Media</h3>
+                <ul class="footer-links">
+                    <li><a href="#press">Press Kit</a></li>
+                    <li><a href="#media">Media Coverage</a></li>
+                    <li><a href="#photos">Photo Gallery</a></li>
+                    <li><a href="#videos">Video Archive</a></li>
+                    <li><a href="#contact-press">Press Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Partners</h3>
+                <ul class="footer-links">
+                    <li><a href="#sponsors">Our Sponsors</a></li>
+                    <li><a href="#advertise">Advertising Opportunities</a></li>
+                    <li><a href="#sponsor-login">Sponsor Login</a></li>
+                    <li><a href="#become-sponsor">Become a Sponsor</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p style="color: rgba(255,255,255,0.8); line-height: 1.8;">
+                    📍 Manhattan, New York City<br>
+                    📧 info@manhattanfilmfestival.com<br>
+                    📞 +1 (212) XXX-XXXX
+                </p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">🐦</a>
+                    <a href="#" class="social-icon">▶️</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Manhattan Film Festival. All Rights Reserved. | Celebrating 20 Years of Independent Cinema</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Sticky Header on Scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animations with Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    navMenu.classList.remove('active');
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
