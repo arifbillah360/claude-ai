@@ -12,13 +12,20 @@
            CSS VARIABLES & RESET
            ============================================ */
         :root {
-            --primary-color: #064D4C;
-            --secondary-color: #E0DCC8;
-            --background: #F8F8F8;
+            /* New Brand Color Palette */
+            --primary: #D62828;
+            --secondary: #1A1A1A;
+            --accent: #E8C547;
+            --bg-light: #F7F7F7;
+            --text-dark: #4A4A4A;
+            --border-light: #DDDDDD;
             --white: #FFF;
             --black: #000;
-            --dark-footer: #032C2B;
-            --font-main: 'Helvetica Neue', Helvetica, sans-serif;
+
+            /* Font System */
+            --font-main: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            /* Transitions */
             --transition: all 0.3s ease;
         }
 
@@ -36,8 +43,8 @@
             font-family: var(--font-main);
             font-size: 16px;
             line-height: 1.6;
-            color: var(--black);
-            background: var(--background);
+            color: var(--text-dark);
+            background: var(--bg-light);
             overflow-x: hidden;
         }
 
@@ -91,7 +98,7 @@
         .logo {
             font-size: 28px;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--primary);
             letter-spacing: -1px;
         }
 
@@ -108,6 +115,7 @@
             letter-spacing: 0.5px;
             transition: var(--transition);
             position: relative;
+            color: var(--text-dark);
         }
 
         .nav-menu a::after {
@@ -117,7 +125,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-color);
+            background: var(--primary);
             transition: var(--transition);
         }
 
@@ -136,7 +144,7 @@
         .nav-toggle span {
             width: 25px;
             height: 3px;
-            background: var(--primary-color);
+            background: var(--primary);
             transition: var(--transition);
         }
 
@@ -145,13 +153,13 @@
            ============================================ */
         .hero {
             position: relative;
-            height: 60vh;
-            min-height: 400px;
+            height: 70vh;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/services/hero.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(214, 40, 40, 0.75), rgba(26, 26, 26, 0.75)), url('images/services/hero-services.jpg') center/cover no-repeat;
             color: var(--white);
             margin-top: 70px;
         }
@@ -163,7 +171,7 @@
         }
 
         .hero-content h1 {
-            font-size: 56px;
+            font-size: 64px;
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 20px;
@@ -171,7 +179,7 @@
         }
 
         .hero-content p {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 300;
             opacity: 0.95;
         }
@@ -188,406 +196,334 @@
         }
 
         /* ============================================
-           SERVICES OVERVIEW SECTION
+           SERVICES GRID SECTION
            ============================================ */
-        .services-overview {
-            padding: 100px 20px;
+        .services-section {
+            padding: 120px 20px;
             background: var(--white);
         }
 
-        .container {
+        .services-container {
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
             font-size: 48px;
             font-weight: 700;
+            color: var(--primary);
             margin-bottom: 20px;
-            color: var(--primary-color);
             letter-spacing: -1px;
         }
 
-        .section-subtitle {
-            text-align: center;
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 70px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-            margin-top: 60px;
         }
 
         .service-card {
-            background: var(--background);
-            padding: 50px 40px;
+            background: var(--bg-light);
+            padding: 50px 30px;
             border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
             transition: var(--transition);
-            border-left: 4px solid var(--secondary-color);
             position: relative;
             overflow: hidden;
+            border-top: 3px solid transparent;
         }
 
         .service-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(224, 220, 200, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border-left-color: var(--primary-color);
+            box-shadow: 0 20px 50px rgba(214, 40, 40, 0.15);
+            background: var(--white);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-icon {
             font-size: 60px;
             margin-bottom: 25px;
-            color: var(--primary-color);
+            color: var(--primary);
         }
 
         .service-card h3 {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--black);
+            margin-bottom: 15px;
+            color: var(--secondary);
         }
 
         .service-card p {
             font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-top: 20px;
-        }
-
-        .service-features li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            font-size: 15px;
-            color: #666;
-        }
-
-        .service-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: 700;
+            line-height: 1.7;
+            color: var(--text-dark);
         }
 
         /* ============================================
-           DETAILED SERVICE SECTIONS
+           PROCESS TIMELINE SECTION
            ============================================ */
-        .service-detail {
-            padding: 100px 20px;
-            background: var(--white);
+        .process-section {
+            padding: 120px 20px;
+            background: var(--bg-light);
         }
 
-        .service-detail:nth-child(even) {
-            background: var(--background);
-        }
-
-        .detail-container {
+        .process-container {
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+
+        .timeline-item {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+            position: relative;
         }
 
-        .detail-container.reverse {
-            direction: rtl;
+        .timeline-item:last-child {
+            margin-bottom: 0;
         }
 
-        .detail-container.reverse > * {
-            direction: ltr;
-        }
-
-        .detail-image {
-            width: 100%;
-            height: 500px;
-            background-color: var(--background);
+        .timeline-content {
+            background: var(--white);
+            padding: 40px;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
         }
 
-        .detail-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .timeline-item:nth-child(odd) .timeline-content {
+            grid-column: 1;
         }
 
-        .detail-image:hover img {
-            transform: scale(1.05);
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 3;
         }
 
-        .detail-content h2 {
-            font-size: 42px;
+        .timeline-content h3 {
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 25px;
-            color: var(--primary-color);
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .timeline-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .timeline-node {
+            grid-column: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 6px solid var(--white);
+            box-shadow: 0 0 0 6px var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .timeline-item:last-child .timeline-line {
+            display: none;
+        }
+
+        /* Mobile Timeline */
+        @media (max-width: 968px) {
+            .timeline-item {
+                grid-template-columns: 60px 1fr;
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+
+            .timeline-content {
+                grid-column: 2 !important;
+            }
+
+            .timeline-node {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .timeline-dot {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+
+            .timeline-line {
+                top: 60px;
+            }
+        }
+
+        /* ============================================
+           WHY CHOOSE US SECTION
+           ============================================ */
+        .why-choose-section {
+            padding: 120px 20px;
+            background: var(--secondary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .why-choose-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .why-choose-container h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
             letter-spacing: -1px;
         }
 
-        .detail-content p {
-            font-size: 17px;
-            line-height: 1.9;
-            color: #333;
-            margin-bottom: 25px;
-        }
-
-        .detail-list {
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .detail-list li {
-            padding: 12px 0;
-            padding-left: 35px;
-            position: relative;
-            font-size: 16px;
-            color: #444;
-        }
-
-        .detail-list li::before {
-            content: '◆';
-            position: absolute;
-            left: 0;
-            color: var(--secondary-color);
-            font-size: 12px;
-        }
-
-        /* ============================================
-           PROCESS SECTION
-           ============================================ */
-        .process-section {
-            padding: 100px 20px;
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .process-section .section-title {
-            color: var(--white);
-        }
-
-        .process-section .section-subtitle {
-            color: rgba(255,255,255,0.9);
-        }
-
-        .process-timeline {
-            max-width: 1200px;
-            margin: 60px auto 0;
-            position: relative;
-        }
-
-        .process-step {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .step-number {
-            width: 100px;
-            height: 100px;
-            background: var(--secondary-color);
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            font-weight: 700;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .step-content {
-            padding-top: 10px;
-        }
-
-        .step-content h3 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .step-content p {
-            font-size: 17px;
-            line-height: 1.8;
-            opacity: 0.95;
-        }
-
-        /* ============================================
-           CAPABILITIES SECTION
-           ============================================ */
-        .capabilities {
-            padding: 100px 20px;
-            background: var(--background);
-        }
-
-        .capabilities-grid {
-            max-width: 1400px;
-            margin: 60px auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .capability-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .capability-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        }
-
-        .capability-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-        }
-
-        .capability-card h4 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .capability-card p {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #666;
-        }
-
-        /* ============================================
-           QUALITY ASSURANCE SECTION
-           ============================================ */
-        .quality-section {
-            padding: 100px 20px;
-            background: var(--white);
-            text-align: center;
-        }
-
-        .quality-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .quality-badges {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 60px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            text-align: center;
-        }
-
-        .badge-icon {
-            width: 120px;
-            height: 120px;
-            background: var(--primary-color);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 50px;
-            box-shadow: 0 10px 30px rgba(6, 77, 76, 0.3);
-        }
-
-        .badge h4 {
+        .why-choose-container > p {
             font-size: 18px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .highlight-card {
+            text-align: center;
+        }
+
+        .highlight-number {
+            font-size: 56px;
             font-weight: 700;
-            color: var(--black);
+            color: var(--accent);
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        .highlight-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .highlight-card p {
+            font-size: 15px;
+            opacity: 0.85;
+            line-height: 1.6;
         }
 
         /* ============================================
            CTA SECTION
            ============================================ */
-        .cta {
+        .cta-section {
             padding: 100px 20px;
-            background: linear-gradient(rgba(6, 77, 76, 0.95), rgba(6, 77, 76, 0.95)), url('images/services/cta-bg.jpg') center/cover fixed;
-            color: var(--white);
+            background: var(--white);
             text-align: center;
         }
 
-        .cta-content {
+        .cta-container {
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .cta h2 {
+        .cta-container h2 {
             font-size: 48px;
             font-weight: 700;
-            margin-bottom: 25px;
+            color: var(--primary);
+            margin-bottom: 30px;
             letter-spacing: -1px;
         }
 
-        .cta p {
-            font-size: 20px;
+        .cta-container p {
+            font-size: 18px;
+            color: var(--text-dark);
             margin-bottom: 40px;
-            opacity: 0.95;
         }
 
-        .btn {
+        .btn-primary {
             display: inline-block;
             padding: 18px 50px;
             font-size: 16px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            background: var(--white);
-            color: var(--primary-color);
+            background: var(--primary);
+            color: var(--white);
             border-radius: 4px;
             transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(214, 40, 40, 0.3);
         }
 
-        .btn:hover {
-            background: var(--secondary-color);
+        .btn-primary:hover {
+            background: #B51E1E;
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 40px rgba(214, 40, 40, 0.4);
         }
 
-        .btn::after {
+        .btn-primary::after {
             content: ' →';
             margin-left: 10px;
         }
@@ -596,7 +532,7 @@
            FOOTER
            ============================================ */
         .footer {
-            background: var(--dark-footer);
+            background: var(--secondary);
             color: var(--white);
             padding: 60px 20px 20px;
         }
@@ -615,6 +551,7 @@
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: -0.5px;
+            color: var(--accent);
         }
 
         .footer-column p {
@@ -640,7 +577,7 @@
 
         .footer-links a:hover {
             opacity: 1;
-            color: var(--secondary-color);
+            color: var(--accent);
             padding-left: 5px;
         }
 
@@ -663,7 +600,7 @@
         }
 
         .social-links a:hover {
-            background: var(--primary-color);
+            background: var(--primary);
             transform: translateY(-3px);
         }
 
@@ -704,14 +641,16 @@
             }
 
             .hero-content h1 {
-                font-size: 38px;
+                font-size: 42px;
             }
 
             .hero-content p {
                 font-size: 18px;
             }
 
-            .section-title {
+            .section-header h2,
+            .cta-container h2,
+            .why-choose-container h2 {
                 font-size: 36px;
             }
 
@@ -719,44 +658,9 @@
                 grid-template-columns: 1fr;
             }
 
-            .detail-container {
-                grid-template-columns: 1fr;
+            .highlights-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                 gap: 40px;
-            }
-
-            .detail-container.reverse {
-                direction: ltr;
-            }
-
-            .detail-image {
-                height: 350px;
-            }
-
-            .detail-content h2 {
-                font-size: 32px;
-            }
-
-            .process-step {
-                grid-template-columns: 80px 1fr;
-                gap: 30px;
-            }
-
-            .step-number {
-                width: 80px;
-                height: 80px;
-                font-size: 28px;
-            }
-
-            .step-content h3 {
-                font-size: 24px;
-            }
-
-            .quality-badges {
-                gap: 40px;
-            }
-
-            .cta h2 {
-                font-size: 32px;
             }
 
             .footer-content {
@@ -771,43 +675,39 @@
 
         @media (max-width: 640px) {
             .hero {
-                min-height: 350px;
+                height: 60vh;
+                min-height: 400px;
             }
 
             .hero-content h1 {
-                font-size: 28px;
+                font-size: 32px;
             }
 
             .hero-content p {
                 font-size: 16px;
             }
 
-            .section-title {
+            .section-header h2 {
                 font-size: 28px;
             }
 
-            .section-subtitle {
-                font-size: 16px;
-            }
-
             .service-card {
-                padding: 40px 30px;
+                padding: 40px 25px;
             }
 
-            .detail-content h2 {
-                font-size: 26px;
+            .timeline-content {
+                padding: 30px 25px;
             }
 
-            .process-step {
+            .timeline-content h3 {
+                font-size: 22px;
+            }
+
+            .highlights-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
 
-            .step-number {
-                margin: 0 auto;
-            }
-
-            .btn {
+            .btn-primary {
                 width: 100%;
                 max-width: 300px;
             }
@@ -837,7 +737,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html" class="active">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="#clients">Clients</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -853,296 +753,189 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Our Services</h1>
-            <p>Comprehensive Manufacturing Solutions from Design to Delivery</p>
+            <p>High-Quality Garment Manufacturing With Global Standards</p>
         </div>
     </section>
 
-    <!-- SERVICES OVERVIEW SECTION -->
-    <section class="services-overview">
-        <div class="container">
-            <h2 class="section-title">What We Offer</h2>
-            <p class="section-subtitle">End-to-end garment manufacturing services powered by cutting-edge technology and skilled craftsmanship</p>
+    <!-- SERVICES GRID SECTION -->
+    <section class="services-section">
+        <div class="services-container">
+            <div class="section-header fade-in">
+                <h2>What We Offer</h2>
+                <p>Comprehensive garment manufacturing solutions backed by cutting-edge technology, skilled craftsmanship, and unwavering commitment to quality.</p>
+            </div>
 
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-icon">📐</div>
                     <h3>Pattern Making</h3>
-                    <p>Expert pattern design and grading services that transform your vision into precise technical specifications.</p>
-                    <ul class="service-features">
-                        <li>CAD-based pattern design</li>
-                        <li>Full size range grading</li>
-                        <li>Marker making optimization</li>
-                        <li>Sample development</li>
-                    </ul>
+                    <p>Expert pattern design and grading services using advanced CAD systems. Perfect fit guaranteed across all size ranges with precision and consistency.</p>
                 </div>
 
                 <div class="service-card fade-in">
                     <div class="service-icon">✂️</div>
-                    <h3>Cutting</h3>
-                    <p>Precision cutting using advanced automated systems for consistent quality and minimal fabric waste.</p>
-                    <ul class="service-features">
-                        <li>Automated cutting machines</li>
-                        <li>Laser cutting technology</li>
-                        <li>Fabric optimization</li>
-                        <li>Quality inspection</li>
-                    </ul>
+                    <h3>Cutting & Stitching</h3>
+                    <p>State-of-the-art cutting technology and skilled sewing teams ensure precision in every garment. Automated cutting rooms for maximum accuracy.</p>
                 </div>
 
                 <div class="service-card fade-in">
                     <div class="service-icon">🧵</div>
-                    <h3>Sewing</h3>
-                    <p>Professional sewing services combining skilled craftsmanship with modern machinery for flawless construction.</p>
-                    <ul class="service-features">
-                        <li>Single & double needle machines</li>
-                        <li>Overlock & flatlock stitching</li>
-                        <li>Button & buttonhole attachment</li>
-                        <li>Specialized construction techniques</li>
-                    </ul>
+                    <h3>Embroidery</h3>
+                    <p>Custom embroidery services with multi-head machines. Complex designs executed with precision, adding premium finishing to your garments.</p>
                 </div>
 
                 <div class="service-card fade-in">
                     <div class="service-icon">🎨</div>
                     <h3>Printing</h3>
-                    <p>High-quality screen printing and digital printing solutions for vibrant, durable, and long-lasting designs.</p>
-                    <ul class="service-features">
-                        <li>Screen printing (water & plastisol)</li>
-                        <li>Digital direct-to-garment printing</li>
-                        <li>Heat transfer applications</li>
-                        <li>Sublimation printing</li>
-                    </ul>
+                    <p>Advanced screen printing, digital printing, and heat transfer services. Vibrant, long-lasting prints that meet international quality standards.</p>
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">🪡</div>
-                    <h3>Embroidery</h3>
-                    <p>Intricate embroidery work that adds elegance, sophistication, and premium value to your garments.</p>
-                    <ul class="service-features">
-                        <li>Multi-head embroidery machines</li>
-                        <li>Logo & custom design work</li>
-                        <li>3D puff embroidery</li>
-                        <li>Chenille & appliqué</li>
-                    </ul>
+                    <div class="service-icon">✓</div>
+                    <h3>Quality Assurance</h3>
+                    <p>Rigorous multi-point inspection system. Every garment undergoes thorough quality checks to ensure it meets your exact specifications.</p>
                 </div>
 
                 <div class="service-card fade-in">
-                    <div class="service-icon">🔍</div>
-                    <h3>Quality Control</h3>
-                    <p>Rigorous multi-stage inspection processes ensuring every garment meets international quality standards.</p>
-                    <ul class="service-features">
-                        <li>Fabric inspection</li>
-                        <li>In-line quality checks</li>
-                        <li>Final garment inspection</li>
-                        <li>AQL standard compliance</li>
-                    </ul>
+                    <div class="service-icon">📦</div>
+                    <h3>Packaging</h3>
+                    <p>Professional packaging solutions tailored to your brand. From individual poly bags to custom retail packaging with labeling and tagging.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎯</div>
+                    <h3>Custom Orders</h3>
+                    <p>Flexible custom manufacturing for unique designs and special requirements. We bring your vision to life with expert execution.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">📊</div>
+                    <h3>Bulk Production</h3>
+                    <p>Large-scale production capacity for high-volume orders. Efficient processes ensure on-time delivery without compromising quality.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PATTERN MAKING DETAIL -->
-    <section class="service-detail">
-        <div class="detail-container fade-in">
-            <div class="detail-image">
-                <img src="images/services/pattern-making.jpg" alt="Pattern Making">
-            </div>
-            <div class="detail-content">
-                <h2>Pattern Making Excellence</h2>
-                <p>Our pattern making department combines traditional expertise with modern CAD technology to create precise, production-ready patterns. We understand that accurate patterns are the foundation of quality garments.</p>
-                <p>Using industry-leading software like Gerber and Lectra, our skilled pattern makers develop patterns that ensure perfect fit, optimal fabric utilization, and efficient production processes.</p>
-                <ul class="detail-list">
-                    <li>Custom pattern development from sketches or samples</li>
-                    <li>Complete size range grading (XS to 5XL)</li>
-                    <li>Digital pattern libraries for repeat orders</li>
-                    <li>Technical specification sheets</li>
-                    <li>Fit sample development and adjustments</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- CUTTING DETAIL -->
-    <section class="service-detail">
-        <div class="detail-container reverse fade-in">
-            <div class="detail-image">
-                <img src="images/services/cutting.jpg" alt="Cutting Services">
-            </div>
-            <div class="detail-content">
-                <h2>Precision Cutting Technology</h2>
-                <p>Our cutting department features state-of-the-art automated cutting systems that deliver unmatched precision and efficiency. We utilize computerized cutting machines and laser technology to achieve clean, accurate cuts every time.</p>
-                <p>Through advanced marker making software, we optimize fabric layouts to minimize waste while maximizing output, ensuring cost-effective production without compromising quality.</p>
-                <ul class="detail-list">
-                    <li>Automated cutting tables for high-volume production</li>
-                    <li>Laser cutting for intricate designs and patterns</li>
-                    <li>Fabric spreading and laying systems</li>
-                    <li>Cut quality inspection and bundling</li>
-                    <li>RFID tracking for production monitoring</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEWING DETAIL -->
-    <section class="service-detail">
-        <div class="detail-container fade-in">
-            <div class="detail-image">
-                <img src="images/services/sewing.jpg" alt="Sewing Services">
-            </div>
-            <div class="detail-content">
-                <h2>Expert Sewing Craftsmanship</h2>
-                <p>Our sewing floor houses over 200 industrial sewing machines operated by highly trained seamstresses with years of experience. We handle everything from basic construction to complex technical garments.</p>
-                <p>Each production line is specialized for specific garment types, ensuring expertise and efficiency throughout the manufacturing process. Our quality supervisors monitor every stage to maintain consistent excellence.</p>
-                <ul class="detail-list">
-                    <li>Lockstitch, chainstitch, and overlock machines</li>
-                    <li>Flatlock and coverstitch for activewear</li>
-                    <li>Bartack and button attachment machines</li>
-                    <li>Specialized machines for pockets, collars, and cuffs</li>
-                    <li>Skilled operators with an average 10+ years experience</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- MANUFACTURING PROCESS -->
+    <!-- PROCESS TIMELINE SECTION -->
     <section class="process-section">
-        <div class="container">
-            <h2 class="section-title">Our Manufacturing Process</h2>
-            <p class="section-subtitle">A streamlined workflow from concept to completion</p>
+        <div class="process-container">
+            <div class="section-header fade-in">
+                <h2>Our Manufacturing Process</h2>
+                <p>A streamlined, 5-step process that ensures quality, efficiency, and on-time delivery for every project.</p>
+            </div>
 
-            <div class="process-timeline">
-                <div class="process-step fade-in">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <h3>Design & Development</h3>
-                        <p>We work closely with you to understand your vision, create technical sketches, develop patterns, and produce initial samples for approval.</p>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Consultation</h3>
+                        <p>We begin with in-depth discussions to understand your requirements, design specifications, fabric preferences, and target delivery dates. Our team provides expert recommendations and cost estimates.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot">1</div>
+                        <div class="timeline-line"></div>
                     </div>
                 </div>
 
-                <div class="process-step fade-in">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <h3>Material Sourcing</h3>
-                        <p>Our procurement team sources premium fabrics, trims, and accessories from trusted suppliers, ensuring quality materials for your production.</p>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Sampling</h3>
+                        <p>Our design team creates initial samples based on your specifications. We refine patterns, test fabrics, and perfect the design through multiple iterations until you're completely satisfied.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot">2</div>
+                        <div class="timeline-line"></div>
                     </div>
                 </div>
 
-                <div class="process-step fade-in">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <h3>Pre-Production</h3>
-                        <p>Pattern grading, marker making, fabric inspection, and cutting preparation ensure everything is ready for efficient production.</p>
-                    </div>
-                </div>
-
-                <div class="process-step fade-in">
-                    <div class="step-number">04</div>
-                    <div class="step-content">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
                         <h3>Production</h3>
-                        <p>Cutting, sewing, printing, embroidery, and finishing processes are executed with precision on our modern production floor.</p>
+                        <p>Once approved, we move to full-scale manufacturing. Our skilled workforce and modern machinery work in sync to produce your order with precision, efficiency, and consistent quality.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot">3</div>
+                        <div class="timeline-line"></div>
                     </div>
                 </div>
 
-                <div class="process-step fade-in">
-                    <div class="step-number">05</div>
-                    <div class="step-content">
-                        <h3>Quality Control</h3>
-                        <p>Multi-stage inspections ensure every garment meets specifications, from in-line checks to final audit before packaging.</p>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>QC & Packaging</h3>
+                        <p>Every garment undergoes rigorous quality control checks. After inspection, items are professionally packaged according to your specifications with proper labeling and documentation.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot">4</div>
+                        <div class="timeline-line"></div>
                     </div>
                 </div>
 
-                <div class="process-step fade-in">
-                    <div class="step-number">06</div>
-                    <div class="step-content">
-                        <h3>Packaging & Delivery</h3>
-                        <p>Professional packaging, labeling, and logistics coordination ensure your products arrive safely and on schedule.</p>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Shipping</h3>
+                        <p>We coordinate with trusted logistics partners to ensure safe, timely delivery to your destination. Full tracking and documentation provided for complete transparency.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot">5</div>
+                        <div class="timeline-line"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CAPABILITIES SECTION -->
-    <section class="capabilities">
-        <div class="container">
-            <h2 class="section-title">Our Capabilities</h2>
-            <p class="section-subtitle">Advanced infrastructure and expertise to handle any project</p>
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="why-choose-section">
+        <div class="why-choose-container">
+            <h2>Why Choose Us</h2>
+            <p>Trusted by leading brands worldwide for our commitment to excellence, innovation, and reliable delivery.</p>
 
-            <div class="capabilities-grid">
-                <div class="capability-card fade-in">
-                    <div class="capability-icon">⚙️</div>
-                    <h4>200+ Machines</h4>
-                    <p>State-of-the-art equipment including specialized machines for every garment type and construction technique.</p>
+            <div class="highlights-grid">
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">3M+</div>
+                    <h3>Garments Produced</h3>
+                    <p>Annual production capacity serving global brands</p>
                 </div>
 
-                <div class="capability-card fade-in">
-                    <div class="capability-icon">👥</div>
-                    <h4>300+ Staff</h4>
-                    <p>Skilled workforce including pattern makers, cutters, sewers, quality inspectors, and production managers.</p>
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">8K+</div>
+                    <h3>Clients Served</h3>
+                    <p>Trusted manufacturing partner worldwide</p>
                 </div>
 
-                <div class="capability-card fade-in">
-                    <div class="capability-icon">📦</div>
-                    <h4>3M+ Annual Capacity</h4>
-                    <p>Large-scale production capability with flexibility for both small batches and high-volume orders.</p>
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">300+</div>
+                    <h3>Skilled Workforce</h3>
+                    <p>Expert professionals dedicated to quality</p>
                 </div>
 
-                <div class="capability-card fade-in">
-                    <div class="capability-icon">🏭</div>
-                    <h4>200K+ Sq Ft Facility</h4>
-                    <p>Modern climate-controlled factory with dedicated zones for cutting, sewing, printing, and finishing.</p>
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">24/7</div>
+                    <h3>Modern Machinery</h3>
+                    <p>State-of-the-art production facilities</p>
                 </div>
 
-                <div class="capability-card fade-in">
-                    <div class="capability-icon">🌍</div>
-                    <h4>Global Reach</h4>
-                    <p>Serving clients across North America, Europe, and Asia with reliable international shipping partners.</p>
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">ISO</div>
+                    <h3>Global Compliance</h3>
+                    <p>ISO 9001:2015 certified production</p>
                 </div>
 
-                <div class="capability-card fade-in">
-                    <div class="capability-icon">⏱️</div>
-                    <h4>Fast Turnaround</h4>
-                    <p>Efficient production timelines with standard 4-6 week lead times and rush order capabilities.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- QUALITY ASSURANCE -->
-    <section class="quality-section">
-        <div class="quality-content">
-            <h2 class="section-title">Quality Assurance</h2>
-            <p class="section-subtitle">Committed to excellence at every stage of production</p>
-
-            <p style="font-size: 18px; line-height: 1.9; color: #333; max-width: 900px; margin: 40px auto;">
-                Our quality management system is certified to ISO 9001:2015 standards, ensuring consistent processes and superior results. We employ AQL (Acceptable Quality Limit) inspection standards and maintain detailed quality records for complete traceability.
-            </p>
-
-            <div class="quality-badges">
-                <div class="badge fade-in">
-                    <div class="badge-icon">✓</div>
-                    <h4>ISO 9001:2015</h4>
-                </div>
-                <div class="badge fade-in">
-                    <div class="badge-icon">🌿</div>
-                    <h4>Eco-Certified</h4>
-                </div>
-                <div class="badge fade-in">
-                    <div class="badge-icon">🛡️</div>
-                    <h4>AQL Compliant</h4>
-                </div>
-                <div class="badge fade-in">
-                    <div class="badge-icon">⭐</div>
-                    <h4>Premium Quality</h4>
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">99%</div>
+                    <h3>Fast Delivery</h3>
+                    <p>On-time delivery rate for all orders</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA SECTION -->
-    <section class="cta">
-        <div class="cta-content">
-            <h2>Ready to Start Your Production?</h2>
-            <p>Let's discuss your project requirements and create something exceptional together.</p>
-            <a href="mailto:info@garmentspro.com" class="btn">Request a Quote</a>
+    <section class="cta-section">
+        <div class="cta-container fade-in">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Get in touch with our team today to discuss your garment manufacturing needs. We'll provide a detailed quote and timeline for your project.</p>
+            <a href="mailto:info@garmentspro.com" class="btn-primary">Get a Quote</a>
         </div>
     </section>
 
@@ -1165,7 +958,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="services.html">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="#clients">Clients</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1173,12 +966,12 @@
             <div class="footer-column">
                 <h3>Services</h3>
                 <ul class="footer-links">
-                    <li><a href="#pattern-making">Pattern Making</a></li>
-                    <li><a href="#cutting">Cutting</a></li>
-                    <li><a href="#sewing">Sewing</a></li>
-                    <li><a href="#printing">Printing</a></li>
-                    <li><a href="#embroidery">Embroidery</a></li>
-                    <li><a href="#quality">Quality Control</a></li>
+                    <li><a href="#services">Pattern Making</a></li>
+                    <li><a href="#services">Cutting & Stitching</a></li>
+                    <li><a href="#services">Embroidery</a></li>
+                    <li><a href="#services">Printing</a></li>
+                    <li><a href="#services">Quality Assurance</a></li>
+                    <li><a href="#services">Packaging</a></li>
                 </ul>
             </div>
             <div class="footer-column">
